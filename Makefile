@@ -65,10 +65,21 @@ INCLUDES :=     -I$(TOP_DIR)/src/abi \
                 -I$(TOP_DIR)/src/rom \
                 -I$(TOP_DIR)/src/util \
                 -I$(TOP_DIR)/$(ASMJIT_SRC_DIR)/asmjit
+ifneq ($(SNIPER_ROOT),)
+INCLUDES +=     -I$(SNIPER_ROOT)
+CPPFLAGS +=     -DENABLE_SIFT=1
+SNIPER_SIFT_LIB = $(SNIPER_ROOT)/sift/libsift.a -lbz2 -lz
+$(warning Enabling SIFT, using $(SNIPER_ROOT) as Sniper root)
+else
+CPPFLAGS =
+SNIPER_SIFT_LIB =
+$(warning Disabling SIFT, could not find $$SNIPER_ROOT)
+endif
+# Enable below for additional debugging output
+#CPPFLAGS +=     -DDEBUG
 OPT_FLAGS =     -O3 -fwrapv
 DEBUG_FLAGS =   -g
 WARN_FLAGS =    -Wall -Wsign-compare -Wno-deprecated-declarations -Wno-strict-aliasing
-CPPFLAGS =
 CFLAGS =        $(DEBUG_FLAGS) $(OPT_FLAGS) $(WARN_FLAGS) $(INCLUDES)
 CCFLAGS =       -std=c11 -D_DEFAULT_SOURCE $(CFLAGS)
 CXXFLAGS =      -std=c++1y -fno-rtti -fno-exceptions $(CFLAGS)
@@ -200,6 +211,7 @@ RV_META_DATA =  $(META_DIR)/codecs \
 
 # libriscv_util
 RV_UTIL_SRCS =  $(SRC_DIR)/util/base64.cc \
+                $(SRC_DIR)/util/bbv.cc \
                 $(SRC_DIR)/util/bigint.cc \
                 $(SRC_DIR)/util/cmdline.cc \
                 $(SRC_DIR)/util/color.cc \
@@ -642,15 +654,15 @@ $(RV_BIN_BIN): $(RV_BIN_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB)
 	@mkdir -p $(shell dirname $@) ;
 	$(call cmd, LD $@, $(LD) $^ $(LDFLAGS) -o $@)
 
-$(RV_JIT_BIN): $(RV_JIT_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(ASMJIT_LIB) $(MMAP_LIB)
+$(RV_JIT_BIN): $(RV_JIT_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(ASMJIT_LIB) $(MMAP_LIB) $(SNIPER_SIFT_LIB)
+	@mkdir -p $(shell dirname $@) ;
+	$(call cmd, LD $@, $(LD) $^ $(SNIPER_SIFT_LIB) $(LDFLAGS) $(SNIPER_SIFT_LIB) $(MMAP_FLAGS) -o $@)
+
+$(RV_SIM_BIN): $(RV_SIM_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(MMAP_LIB) $(SNIPER_SIFT_LIB)
 	@mkdir -p $(shell dirname $@) ;
 	$(call cmd, LD $@, $(LD) $^ $(LDFLAGS) $(MMAP_FLAGS) -o $@)
 
-$(RV_SIM_BIN): $(RV_SIM_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(MMAP_LIB)
-	@mkdir -p $(shell dirname $@) ;
-	$(call cmd, LD $@, $(LD) $^ $(LDFLAGS) $(MMAP_FLAGS) -o $@)
-
-$(RV_SYS_BIN): $(RV_SYS_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB)
+$(RV_SYS_BIN): $(RV_SYS_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(SNIPER_SIFT_LIB)
 	@mkdir -p $(shell dirname $@) ;
 	$(call cmd, LD $@, $(LD) $^ $(LDFLAGS) -o $@)
 
@@ -666,7 +678,7 @@ $(TEST_ENDIAN_BIN): $(TEST_ENDIAN_OBJS)
 	@mkdir -p $(shell dirname $@) ;
 	$(call cmd, LD $@, $(LD) $^ $(LDFLAGS) -o $@)
 
-$(TEST_JIT_BIN): $(TEST_JIT_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(ASMJIT_LIB) $(MMAP_LIB)
+$(TEST_JIT_BIN): $(TEST_JIT_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(ASMJIT_LIB) $(MMAP_LIB) $(SNIPER_SIFT_LIB)
 	@mkdir -p $(shell dirname $@) ;
 	$(call cmd, LD $@, $(LD) $^ $(LDFLAGS) -o $@)
 

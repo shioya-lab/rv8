@@ -5,6 +5,14 @@
 #ifndef rv_processor_impl_h
 #define rv_processor_impl_h
 
+#include "meta.h"
+#include "bbv.h"
+
+#if ENABLE_SIFT
+# include "sift/sift_format.h"
+# include "sift/sift_writer.h"
+#endif
+
 namespace riscv {
 
 	/* Interpreter Exit Causes */
@@ -48,6 +56,7 @@ namespace riscv {
 		typedef T decode_type;
 		typedef P processor_type;
 		typedef M mmu_type;
+                typedef processor_impl<T,P,M> processor_impl_type;
 
 		mmu_type mmu;
 		hist_pc_map_t hist_pc;
@@ -260,6 +269,252 @@ namespace riscv {
 			if (P::log & proc_log_int_reg) print_int_registers();
 		}
 
+		bool isBranch(decode_type &dec)
+		{
+			bool res = false;
+			switch (dec.op) {
+				case rv_op_beq:		/* Branch Equal */
+				case rv_op_bne:		/* Branch Not Equal */
+				case rv_op_blt:		/* Branch Less Than */
+				case rv_op_bge:		/* Branch Greater than Equal */
+				case rv_op_bltu:	/* Branch Less Than Unsigned */
+				case rv_op_bgeu:	/* Branch Greater than Equal Unsigned */
+				case rv_op_beqz:	/* Branch if = zero */
+				case rv_op_bnez:	/* Branch if ≠ zero */
+				case rv_op_blez:	/* Branch if ≤ zero */
+				case rv_op_bgez:	/* Branch if ≥ zero */
+				case rv_op_bltz:	/* Branch if < zero */
+				case rv_op_bgtz:	/* Branch if > zero */
+				case rv_op_ble:
+				case rv_op_bleu:
+				case rv_op_bgt:
+				case rv_op_bgtu:
+					res = true;
+					break;
+				default:
+					res = false;
+					break;
+			}
+			return res;
+		}
+
+		bool isMemoryOp(decode_type &dec)
+		{
+			bool res = false;
+			switch (dec.op) {
+					//P::ireg[dec.rs1] + dec.imm
+				case rv_op_lb: 			/* Load Byte */
+				case rv_op_lh: 			/* Load Half */
+				case rv_op_lw: 			/* Load Word */
+				case rv_op_lbu: 		/* Load Byte Unsigned */
+				case rv_op_lhu: 		/* Load Half Unsigned */
+				case rv_op_lwu: 		/* Load Word Unsigned */
+				case rv_op_ld: 			/* Load Double */
+				case rv_op_flw: 		/* FP Load (SP) */
+				case rv_op_fld: 		/* FP Load (DP) */
+				case rv_op_sb: 			/* Store Byte */
+				case rv_op_sh: 			/* Store Half */
+				case rv_op_sw: 			/* Store Word */
+				case rv_op_sd: 			/* Store Double */
+				case rv_op_fsw: 		/* FP Store (SP) */
+				case rv_op_fsd: 		/* FP Store (DP) */
+					//P::ireg[dec.rs1]
+				case rv_op_lr_w: 	 	/* Load Reserved Word */
+				case rv_op_lr_d: 		/* Load Reserved Double Word */
+				case rv_op_sc_w: 		/* Store Conditional Word */
+				case rv_op_sc_d: 		/* Store Conditional Double Word */
+					res = true; 
+					break;
+				default:
+					res = false;
+					break;
+			}
+			return res;
+		}
+
+		uint64_t getAddress(decode_type &dec)
+		{
+			uint64_t addr ;
+#ifdef DEBUG
+			printf("dec.op = %d\n",dec.op);
+#endif
+			switch (dec.op) {
+				case rv_op_lb: 			/* Load Byte */
+				case rv_op_lh: 			/* Load Half */
+				case rv_op_lw: 			/* Load Word */
+				case rv_op_lbu: 		/* Load Byte Unsigned */
+				case rv_op_lhu: 		/* Load Half Unsigned */
+				case rv_op_lwu: 		/* Load Word Unsigned */
+				case rv_op_ld: 			/* Load Double */
+				case rv_op_flw: 		/* FP Load (SP) */
+				case rv_op_fld: 		/* FP Load (DP) */
+				case rv_op_sb: 			/* Store Byte */
+				case rv_op_sh: 			/* Store Half */
+				case rv_op_sw: 			/* Store Word */
+				case rv_op_sd: 			/* Store Double */
+				case rv_op_fsw: 		/* FP Store (SP) */
+				case rv_op_fsd: 		/* FP Store (DP) */
+					addr = P::ireg[dec.rs1] + dec.imm;
+					break;
+				case rv_op_lr_w: 	 	/* Load Reserved Word */
+				case rv_op_lr_d: 		/* Load Reserved Double Word */
+				case rv_op_sc_w: 		/* Store Conditional Word */
+				case rv_op_sc_d: 		/* Store Conditional Double Word */
+					addr = P::ireg[dec.rs1]; 
+					break;
+				default:
+					printf("No such instruction!");
+					break;
+			}
+			return addr;
+		}
+
+#if ENABLE_SIFT
+
+                static void getCode(uint8_t *dst, const uint8_t *src, uint32_t size, void* _p)
+                {
+                        processor_impl_type p = *reinterpret_cast<processor_impl_type*>(_p);
+                        uint64_t src_addr = reinterpret_cast<uint64_t>(src);
+                        for (uint64_t i = 0 ; i < size ; ++i) {
+                                auto addr = src_addr + i;
+                                p.mmu.template load<P,u8>(p, addr, dst[i]);
+                        }
+#ifdef DEBUG
+                        printf("Asking for code at 0x%llx for len %d 0x%x 0x%x 0x%x 0x%x", src_addr, size, (int)dst[0], (int)dst[1], (int)dst[2], (int)dst[3]);
+#endif
+                }
+
+                void create_sift_writer(std::string filename = "rv8.sift")
+                {
+                        P::output = new Sift::Writer(filename.c_str(), nullptr, true, "", 0, false, false, false, getCode, reinterpret_cast<void*>(this));
+                        printf("[src\\emu\\processor-proxy.h]\tSift Writer created with filename [%s]\n", filename.c_str());
+                        return;// output;
+                }
+
+                void create_sift_writer(uint64_t start, uint64_t stop)
+                {
+                        create_sift_writer(P::sift_prefix+"_"+std::to_string(start)+(stop == UINT64_MAX ? "" : ("_" + std::to_string(stop)))+".sift");
+                }
+
+                void close_sift_writer()
+                {
+                        if(P::output != nullptr) {
+                                P::output->End();
+                                delete P::output;
+                                P::output = nullptr;
+                                printf("[src\\emu\\processor-proxy.h]\tSift Writer closed\n");
+                        }
+                }
+
+		void print_log_PSift(decode_type &dec, inst_t inst, int new_offset)
+		{
+#ifdef DEBUG
+			printf ("[src\\emu\\processor-impl.h]\tinside print_log_PSift\n");
+			static const char *fmt_32 = "%019llu core-%-4zu:%08llx (%s) %-30s %s\n";
+			static const char *fmt_64 = "%019llu core-%-4zu:%016llx (%s) %-30s %s\n";
+			static const char *fmt_128 = "%019llu core-%-4zu:%032llx (%s) %-30s %s\n";
+			//if (P::log & proc_log_hist_reg) histogram_add_regs(dec);
+			//if (P::log & proc_log_hist_inst) histogram_add_inst(dec);
+#endif
+			if ((P::log & proc_log_sift) && (P::output != nullptr)) {
+
+				std::fexcept_t flags;
+				fegetexceptflag(&flags, FE_ALL_EXCEPT);
+				if (!(P::log & proc_log_no_pseudo)) decode_pseudo_inst(dec);		// src/asm/disasm.h
+				if (symlookup) printf("%32s ", symlookup(P::pc));
+				std::string args = disasm_inst_simple(dec);
+				std::string op_args = (P::log & proc_log_operands) ? format_operands(dec) : std::string();
+#ifdef DEBUG
+				printf(P::xlen == 32 ? fmt_32 : P::xlen == 64 ? fmt_64 : fmt_128,
+					P::instret, P::hart_id, addr_t(P::pc), format_inst(inst).c_str(), args.c_str(), op_args.c_str());
+#endif
+				
+				uint64_t addr           =       addr_t(P::pc);
+				uint8_t size            =       inst_length(inst);
+				uint64_t addresses[4]   =       {0};
+				bool is_memory          =       isMemoryOp(dec);
+				uint8_t num_addresses 	=       static_cast<uint8_t>(is_memory); // true -> 1
+				if(is_memory == true) {
+					uint64_t addr_mem = getAddress(dec);
+					addresses[0] = addr_mem;
+#ifdef DEBUG
+					printf("addr_mem => %llx\n",(unsigned long long)addr_mem);
+#endif
+				}
+
+				bool is_branch          =       isBranch(dec);
+				bool taken              =       0;
+				if(is_branch == true) {
+					int nextpc_offset = intptr_t(dec.imm);
+#ifdef DEBUG
+					printf("[src\\emu\\processor-impl.h]\tIsBRANCH -> new offset = %d nextpcoffset = %d \n",new_offset,nextpc_offset);
+#endif
+					if(nextpc_offset==new_offset) {
+						taken = 1;
+					}
+				}
+
+				bool is_predicate       =       0;
+				bool executed           =       1;
+
+#ifdef DEBUG
+				printf("[src\\emu\\processor-impl.h]\t%032llx P::xlen=%d INSTR :: %llu instformat=%s args=%s dec.op=%d isBranch=%d taken=%d\n", addr_t(P::pc), size, inst,rv_inst_format[dec.op],args.c_str(),dec.op,is_branch,taken);
+#endif
+				//print_int_registers();
+                                if (P::output) {
+					P::output->Instruction(addr, size, num_addresses, addresses, is_branch, taken, is_predicate, executed);
+				}
+
+                                if (P::instret >= P::sift_end_insn) {
+                                        close_sift_writer();
+                                        if (P::sift_rec_range.size()) {
+					        auto start_stop = P::sift_rec_range.front();
+                                                P::sift_end_insn = std::get<1>(start_stop);
+
+		                                if (P::sift_filename == "") {
+                		                        /* Create a prefix_start_stop file */
+                                		        create_sift_writer(std::get<0>(start_stop), std::get<1>(start_stop));
+                                		        P::sift_rec_range.pop_front();
+                               			} else {
+                                		        /* Use this filename exactly */
+                                		        create_sift_writer(P::sift_filename);
+                                		        P::sift_rec_range.clear(); // Only allow one recording with this filename
+                                		}
+
+                                        } else {
+                                                P::output = nullptr;
+                                        }
+                                }
+
+				fesetexceptflag(&flags, FE_ALL_EXCEPT);
+			}
+			//if (P::log & proc_log_int_reg) print_int_registers();
+		}
+#endif
+
+                void create_bbv()
+                {
+                     P::bbv = new BbvCount(P::bbv_periodicity);
+                     return; // bbv;
+                }
+
+                void close_bbv()
+                {
+                     if (P::bbv) {
+                         P::bbv->save();
+                         delete P::bbv;
+                         P::bbv = nullptr;
+                     }
+                }
+
+                void print_log_bbv(decode_type &dec, inst_t inst, int new_offset)
+                {
+                        auto addr = addr_t(P::pc);
+                        auto size = inst_length(inst);
+                        auto is_branch = isBranch(dec);
+                        P::bbv->count(addr, size, is_branch);
+                }
+
 		void print_device_registers() {}
 
 		void print_csr_registers()
@@ -278,6 +533,7 @@ namespace riscv {
 					((i - 1) % 2) == 0 ? "\n" : ((i - 1) % 2) > 0 ? " " : "");
 			}
 		}
+
 
 		void print_f32_registers()
 		{

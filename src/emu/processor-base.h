@@ -5,6 +5,16 @@
 #ifndef rv_processor_base_h
 #define rv_processor_base_h
 
+#include <deque> 
+#include <tuple>
+#include <string>
+
+#include "bbv.h"
+#if ENABLE_SIFT
+# include "sift/sift_format.h"
+# include "sift/sift_writer.h"
+#endif
+
 namespace riscv {
 
 	/* RV32 integer register */
@@ -176,6 +186,17 @@ namespace riscv {
 		UX breakpoint;                /* Breakpoint */
 		UX trace_iters;               /* Trace iterations (JIT) */
 
+                u64 bbv_periodicity;          /* When collecting BBVs. How often should we save snapshots? */
+                std::deque<std::tuple<uint64_t,uint64_t>> sift_rec_range; /* SIFT recording options */
+                uint64_t sift_end_insn;           /* end instruction when we should close and (possible) reopen the SIFT file */
+                std::string sift_prefix = "rv8";
+                std::string sift_filename;
+                BbvCount *bbv;
+#if ENABLE_SIFT
+                Sift::Writer *output = nullptr;
+#endif
+
+
 		u64 trace_pc[trace_l1_size];
 		u64 trace_fn[trace_l1_size];
 
@@ -189,7 +210,7 @@ namespace riscv {
 			node_id(0), hart_id(0), log(0), lr(0), cause(0), badaddr(0), env(),
 			running(true), debugging(false), exceptions(true),
 			update_instret(false), memory_registers(false),
-			breakpoint(0), trace_iters(0), trace_pc(), trace_fn(),
+			breakpoint(0), trace_iters(0), bbv_periodicity(0), trace_pc(), trace_fn(),
 			time(0), instret(0), fcsr(0) {}
 
 		/* Internal setjmp/longjump causes */

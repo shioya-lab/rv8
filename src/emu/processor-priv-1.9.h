@@ -780,7 +780,9 @@ core {
 					return pc_offset;
 				case rv_op_fence_i:
 					return pc_offset;
-				default: break;
+				default:
+					printf("[src\\emu\\processor-priv-1.9.h]\tinst_priv - Illegal instruction %d\n",dec.op);
+					break;
 			}
 			return -1; /* illegal instruction */
 		}

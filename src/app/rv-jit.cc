@@ -29,6 +29,8 @@
 #include <thread>
 #include <atomic>
 #include <type_traits>
+#include <sstream>
+#include <iterator>
 
 #include "dense_hash_map"
 
@@ -135,6 +137,32 @@ static bool allow_env_var(const char *var)
 	return false;
 }
 
+/* helper functions */
+
+// From http://www.martinbroadhurst.com/how-to-split-a-string-in-c.html
+// From https://stackoverflow.com/questions/4533652/how-to-split-string-using-istringstream-with-other-delimiter-than-whitespace/4534720#4534720
+template <class Container>
+void split_string(const std::string& str, Container& ret)
+{
+    std::vector<std::string> cont;
+    std::istringstream iss(str);
+
+    std::string s;
+    while ( std::getline( iss, s, ':' ) ) {
+        cont.push_back(s);
+    }
+
+    ret.clear();
+
+    // From https://stackoverflow.com/questions/12552277/whats-the-best-way-to-iterate-over-two-or-more-containers-simultaneously
+    for(unsigned i = 0; i < cont.size(); i+=2) {
+	auto one = strtoull(cont[i].c_str(), nullptr, 10);
+	auto two = strtoull(cont[i+1].c_str(), nullptr, 10);
+        typename Container::value_type t(one,two);
+        ret.push_back(t);
+    }
+}
+
 /* RISC-V User Mode Emulator and Binary Translator */
 
 struct rv_jit_emulator
@@ -167,8 +195,12 @@ struct rv_jit_emulator
 	bool help_or_error = false;
 	bool symbolicate = false;
 	uint64_t initial_seed = 0;
+        uint64_t bbv_periodicity = 1000000;
+        std::string sift_prefix;
+        std::string sift_filename;
 	std::string elf_filename;
 	std::string stats_dirname;
+        std::deque<std::tuple<uint64_t,uint64_t>> sift_rec_range = { std::pair<uint64_t,uint64_t>(0,UINT64_MAX) }; // 0-range-based writing of sift files (inclusive)
 
 	std::vector<std::string> host_cmdline;
 	std::vector<std::string> host_env;
@@ -182,6 +214,26 @@ struct rv_jit_emulator
 			{ "-l", "--log-instructions", cmdline_arg_type_none,
 				"Log Instructions",
 				[&](std::string s) { return (proc_logs |= (proc_log_inst | proc_log_trap)); } },
+			{ "-b", "--log-bbv", cmdline_arg_type_none,
+				"Log BBVs",
+				[&](std::string s) { return (proc_logs |= proc_log_bbv); } },
+			{ "-B", "--log-bbv-periodicity", cmdline_arg_type_string,
+				"BBV periodicity (in instructions)",
+				[&](std::string s) { bbv_periodicity = strtoull(s.c_str(), nullptr, 10); return true; } },
+#if ENABLE_SIFT
+			{ "-s", "--log-sift", cmdline_arg_type_none,
+				"Log in SIFT format",
+				[&](std::string s) { return (proc_logs |= proc_log_sift); } },
+			{ "-g", "--log-sift-range", cmdline_arg_type_string,
+				"SIFT instruction count ranges",
+				[&](std::string s) { split_string(s, sift_rec_range); return true; } },
+			{ "-f", "--log-sift-prefix", cmdline_arg_type_string,
+				"SIFT filename prefix",
+				[&](std::string s) { sift_prefix = s; return true; } },
+			{ "-f", "--log-sift-filename", cmdline_arg_type_string,
+				"SIFT filename",
+				[&](std::string s) { sift_filename = s; return true; } },
+#endif
 			{ "-o", "--log-operands", cmdline_arg_type_none,
 				"Log Instructions and Operands",
 				[&](std::string s) { return (proc_logs |= (proc_log_inst | proc_log_trap | proc_log_operands)); } },
@@ -283,6 +335,9 @@ struct rv_jit_emulator
 	template <typename P>
 	void start_jit()
 	{
+#ifdef DEBUG
+		printf("[src\\app\\rv-jit.cc]\tStart start_jit\n");
+#endif
 		/* setup floating point exception mask */
 		fenv_init();
 
@@ -305,6 +360,11 @@ struct rv_jit_emulator
 		proc.stats_dirname = stats_dirname;
 		if (symbolicate) proc.symlookup = [&](addr_t va) { return proc.symlookup_elf(va); };
 
+                proc.bbv_periodicity = bbv_periodicity;
+                proc.sift_rec_range = sift_rec_range;
+                proc.sift_prefix = sift_prefix;
+                proc.sift_filename = sift_filename;
+
 		/* set JIT options */
 		proc.trace_iters = trace_iters;
 		proc.update_instret = update_instret;
@@ -321,8 +381,17 @@ struct rv_jit_emulator
 
 		/* Initialize and run the processor */
 		proc.init();
+#ifdef DEBUG
+		printf("[src\\app\\rv-jit.cc]\tCalling proc.run \n");
+#endif
 		proc.run(proc.log & proc_log_ebreak_cli ? exit_cause_cli : exit_cause_continue);
+#ifdef DEBUG
+		printf("[src\\app\\rv-jit.cc]\tBack after proc.run \n");
+#endif
 		proc.destroy();
+#ifdef DEBUG
+		printf("[src\\app\\rv-jit.cc]\tExit start_jit\n");
+#endif
 	}
 
 	/* Start a specific processor implementation based on ELF type */

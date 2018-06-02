@@ -124,6 +124,26 @@ namespace riscv {
 
 			/* processor initialization */
 			P::init();
+#if ENABLE_SIFT
+			auto start_stop = P::sift_rec_range.front();
+			auto start = std::get<0>(start_stop);
+			if (start == 0) {
+				P::sift_end_insn = std::get<1>(start_stop);
+
+				if (P::sift_filename == "") {
+					/* Create a prefix_start_stop file */
+					P::create_sift_writer(std::get<0>(start_stop), std::get<1>(start_stop));
+					P::sift_rec_range.pop_front();
+				} else {
+					/* Use this filename exactly */
+					P::create_sift_writer(P::sift_filename);
+					P::sift_rec_range.clear(); // Only allow one recording with this filename
+				}
+			} else {
+				P::sift_end_insn = start-1;
+			}
+#endif
+			P::create_bbv();
 
 			/* create trace lookup and load store functions */
 			create_trace_lookup();
@@ -179,6 +199,9 @@ namespace riscv {
 
 		typename P::ux inst_fence_i(typename P::decode_type &dec, typename P::ux pc_offset)
 		{
+#ifdef DEBUG
+			printf("[src\\jit\\jit-runloop.h]\tinside inst_fence_i %d\n", dec.op);
+#endif
 			switch(dec.op) {
 				case rv_op_fence:
 					/* nop */
@@ -186,7 +209,11 @@ namespace riscv {
 				case rv_op_fence_i:
 					clear_trace_cache();
 					return pc_offset;
-				default: break;
+				default:
+#ifdef DEBUG
+					printf("[src\\jit\\jit-runloop.h]\tinst_fence_i - Illegal instruction %d\n", dec.op);
+#endif
+					break;
 			}
 			return -1; /* illegal instruction */
 		}
@@ -448,6 +475,12 @@ namespace riscv {
 				(new_offset = P::inst_priv(dec, pc_offset)) != typename P::ux(-1))
 			{
 				if (P::log) P::print_log(dec, inst);
+#if ENABLE_SIFT
+					if (P::log & ~proc_log_sift)
+						P::print_log_PSift(dec, inst, new_offset);
+#endif
+					if (P::log & ~proc_log_bbv)
+						P::print_log_bbv(dec, inst, new_offset);
 				P::pc += new_offset;
 				P::instret++;
 			} else {
@@ -519,8 +552,14 @@ namespace riscv {
 				if (!P::running) return exit_cause_poweroff;
 			}
 
+#ifdef DEBUG
+			printf("[src\\jit\\jit-runloop.h]\tStart: step the processor.. \n");
+#endif
 			/* step the processor */
 			while (P::instret != inststop) {
+#ifdef DEBUG
+				printf("[src\\jit\\jit-runloop.h]\tIN: step() - %llu | %llu\n",P::instret,inststop);
+#endif
 				if ((P::log & proc_log_jit_trap) && jit_exec(*this, P::pc)) {
 					continue;
 				}
@@ -543,12 +582,21 @@ namespace riscv {
 						 (new_offset = inst_fence_i(dec, pc_offset)) != typename P::ux(-1) ||
 						 (new_offset = P::inst_priv(dec, pc_offset)) != typename P::ux(-1))
 				{
+#if ENABLE_SIFT
+					if (P::log & ~proc_log_sift)
+						P::print_log_PSift(dec, inst, new_offset);
+#endif
+					if (P::log & ~proc_log_bbv)
+						P::print_log_bbv(dec, inst, new_offset);
 					if (P::log & ~(proc_log_hist_pc | proc_log_jit_trap)) P::print_log(dec, inst);
 					P::pc += new_offset;
 					P::instret++;
 				} else {
 					P::raise(rv_cause_illegal_instruction, P::pc);
 				}
+#ifdef DEBUG
+				printf("[src\\jit\\jit-runloop.h]\tOUT: step() - %llu \n\n",P::instret);
+#endif
 			}
 			return exit_cause_continue;
 		}

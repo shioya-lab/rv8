@@ -22,10 +22,24 @@ namespace riscv {
 
 		const char* name() { return "rv-sim"; }
 
-		void init() {}
+		void init() {
+#ifdef DEBUG
+			printf("[src\\emu\\processor-proxy.h]\tProcessor Init\n");
+#endif
+			#ifdef DEBUG_ENABLED
+				printf("My error message");
+			#endif
+		}
 
 		void destroy()
 		{
+#ifdef DEBUG
+			printf("[src\\emu\\processor-proxy.h]\tProcessor Destroy\n");
+#endif
+#if ENABLE_SIFT
+			P::close_sift_writer();
+#endif
+                        P::close_bbv();
 			/* Unmap memory segments */
 			for (auto &seg: P::mmu.mem->segments) {
 				guest_munmap(seg.first, seg.second);
@@ -34,6 +48,9 @@ namespace riscv {
 
 		void exit(int rc)
 		{
+#ifdef DEBUG
+			printf("[src\\emu\\processor-proxy.h]\tinside exit()\n");
+#endif
 			if (P::log & proc_log_exit_log_stats) {
 
 				/* reopen console if necessary */
@@ -98,6 +115,10 @@ namespace riscv {
 					histogram_inst_save(*this, filename);
 				}
 			}
+			destroy();
+#ifdef DEBUG
+			printf("[src\\emu\\processor-proxy.h]\tExit from processor-proxy\n");
+#endif
 		}
 
 		static inline int elf_p_flags_mmap(int v)
@@ -388,10 +409,18 @@ namespace riscv {
 
 		typename P::ux inst_priv(typename P::decode_type &dec, typename P::ux pc_offset)
 		{
+#ifdef DEBUG
+			printf("[src\\emu\\processor-proxy.h]\tinside inst_priv()\n");
+#endif
 			switch (dec.op) {
 				case rv_op_fence:
 				case rv_op_fence_i: return pc_offset;
-				case rv_op_ecall:  proxy_syscall(*this); return pc_offset;
+				case rv_op_ecall:
+#ifdef DEBUG
+                                                                   printf("[src\\emu\\processor-proxy.h]\tcalling proxy_syscall %ld\n",static_cast<unsigned long>(this->ireg[rv_ireg_a7]));
+#endif
+								   proxy_syscall(*this); 
+								   return pc_offset;
 				case rv_op_csrrw:  return inst_csr(dec, csr_rw, dec.imm, P::ireg[dec.rs1], pc_offset);
 				case rv_op_csrrs:  return inst_csr(dec, csr_rs, dec.imm, P::ireg[dec.rs1], pc_offset);
 				case rv_op_csrrc:  return inst_csr(dec, csr_rc, dec.imm, P::ireg[dec.rs1], pc_offset);

@@ -33,6 +33,8 @@ namespace riscv {
 		proc_log_jit_regalloc =    1<<20,      /* Log JIT register allocation */
 		proc_log_exit_log_stats =  1<<21,      /* Log statistics on interpreter exit */
 		proc_log_exit_save_stats = 1<<22,      /* Save statistics on interpreter exit */
+		proc_log_sift =            1<<23,      /* Generate SIFT output traces */
+		proc_log_bbv =             1<<24,      /* Generate BBVs */
 	};
 
 }
