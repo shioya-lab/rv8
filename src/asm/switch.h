@@ -632,7 +632,7 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 									switch (((inst >> 15) & 0b11111) /* inst[19:15] */) {
 										case 0: if (rvs) op = rv_op_ebreak; break;
 									}
-									break;
+	 								break;
 								case 64:
 									// uret
 									switch (((inst >> 15) & 0b11111) /* inst[19:15] */) {
@@ -645,13 +645,16 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 										case 0: if (rvs) op = rv_op_sret; break;
 									}
 									break;
-								case 8320: if (rvs) op = rv_op_sfence_vm; break;
+								case 8320:
+									if (rvs) op = rv_op_sfence_vm; break;
 								case 8352:
 									// wfi
 									switch (((inst >> 15) & 0b11111) /* inst[19:15] */) {
 										case 0: if (rvs) op = rv_op_wfi; break;
 									}
 									break;
+								case 9216:
+									if (rvs) op = rv_op_sfence_vma; break;
 								case 16448:
 									// hret
 									switch (((inst >> 15) & 0b11111) /* inst[19:15] */) {

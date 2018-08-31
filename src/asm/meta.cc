@@ -1385,6 +1385,12 @@ const rv_operand_data rv_operands_sx_rs1_sx_rs2_T_sbimm12[] = {
 	{ rv_operand_name_none, rv_operand_type_none, rv_primitive_none, rv_type_none, 0 }
 };
 
+const rv_operand_data rv_operands_sx_rs1_sx_rs2[] = {
+	{ rv_operand_name_rs1, rv_operand_type_ireg5, rv_primitive_sx, rv_type_ireg, 5 },
+	{ rv_operand_name_rs2, rv_operand_type_ireg5, rv_primitive_sx, rv_type_ireg, 5 },
+	{ rv_operand_name_none, rv_operand_type_none, rv_primitive_none, rv_type_none, 0 }
+};
+
 const rv_operand_data rv_operands_sx_rs1_sx_rs2_T_simm12[] = {
 	{ rv_operand_name_rs1, rv_operand_type_ireg5, rv_primitive_sx, rv_type_ireg, 5 },
 	{ rv_operand_name_rs2, rv_operand_type_ireg5, rv_primitive_sx, rv_type_ireg, 5 },
@@ -1766,6 +1772,7 @@ const rv_codec rv_inst_codec[] = {
 	/*              fsflags */ rv_codec_i_csr,
 	/*                fsrmi */ rv_codec_i_csr,
 	/*             fsflagsi */ rv_codec_i_csr,
+	/*			 sfence.vma */ rv_codec_r_f,
 };
 
 const char* rv_inst_format[] = {
@@ -2087,6 +2094,7 @@ const char* rv_inst_format[] = {
 	/*              fsflags */ rv_fmt_rd_rs1,
 	/*                fsrmi */ rv_fmt_rd_zimm,
 	/*             fsflagsi */ rv_fmt_rd_zimm,
+	/*			 sfence.vma */ rv_fmt_rs1_rs2,
 };
 
 const rv_operand_data* rv_inst_operand_data[] = {
@@ -2408,6 +2416,7 @@ const rv_operand_data* rv_inst_operand_data[] = {
 	/*              fsflags */ rv_operands_sx_rd_sx_rs1,
 	/*                fsrmi */ rv_operands_sx_rd_T_zimm,
 	/*             fsflagsi */ rv_operands_sx_rd_T_zimm,
+	/*			 sfence.vma */ rv_operands_sx_rs1_sx_rs2,
 };
 
 const riscv::inst_t rv_inst_match[] = {
@@ -2729,6 +2738,7 @@ const riscv::inst_t rv_inst_match[] = {
 	/*              fsflags */ 0x0000000000000000,
 	/*                fsrmi */ 0x0000000000000000,
 	/*             fsflagsi */ 0x0000000000000000,
+	/*			 sfence.vma */ 0x0000000012000073,
 };
 
 const riscv::inst_t rv_inst_mask[] = {
@@ -3050,6 +3060,7 @@ const riscv::inst_t rv_inst_mask[] = {
 	/*              fsflags */ 0x0000000000000000,
 	/*                fsrmi */ 0x0000000000000000,
 	/*             fsflagsi */ 0x0000000000000000,
+	/*			 sfence.vma */ 0x00000000fe007fff,
 };
 
 const rvc_constraint rvcc_jal[] = {
@@ -3783,6 +3794,7 @@ const rv_comp_data* rv_inst_pseudo[] = {
 	/*              fsflags */ nullptr,
 	/*                fsrmi */ nullptr,
 	/*             fsflagsi */ nullptr,
+	/*			 sfence.vma */ nullptr,
 };
 
 const rv_comp_data rv_inst_depseudo[] = {
@@ -4104,6 +4116,7 @@ const rv_comp_data rv_inst_depseudo[] = {
 	/*              fsflags */ { rv_op_csrrw, rvcc_fsflags },
 	/*                fsrmi */ { rv_op_csrrwi, rvcc_fsrmi },
 	/*             fsflagsi */ { rv_op_csrrwi, rvcc_fsflagsi },
+	/*			 sfence.vma */ { rv_op_illegal, nullptr },
 };
 
 const rv_comp_data* rv_inst_comp_rv32[] = {
@@ -4425,6 +4438,7 @@ const rv_comp_data* rv_inst_comp_rv32[] = {
 	/*              fsflags */ nullptr,
 	/*                fsrmi */ nullptr,
 	/*             fsflagsi */ nullptr,
+	/*			 sfence.vma */ nullptr,
 };
 
 const rv_comp_data* rv_inst_comp_rv64[] = {
@@ -4746,6 +4760,7 @@ const rv_comp_data* rv_inst_comp_rv64[] = {
 	/*              fsflags */ nullptr,
 	/*                fsrmi */ nullptr,
 	/*             fsflagsi */ nullptr,
+	/*			 sfence.vma */ nullptr,
 };
 
 const rv_comp_data* rv_inst_comp_rv128[] = {
@@ -5067,6 +5082,7 @@ const rv_comp_data* rv_inst_comp_rv128[] = {
 	/*              fsflags */ nullptr,
 	/*                fsrmi */ nullptr,
 	/*             fsflagsi */ nullptr,
+	/*			 sfence.vma */ nullptr,
 };
 
 const int rv_inst_decomp_rv32[] = {
@@ -5388,6 +5404,7 @@ const int rv_inst_decomp_rv32[] = {
 	/*              fsflags */ rv_op_illegal,
 	/*                fsrmi */ rv_op_illegal,
 	/*             fsflagsi */ rv_op_illegal,
+	/*			 sfence.vma */ rv_op_illegal,
 };
 
 const int rv_inst_decomp_rv64[] = {
@@ -5709,6 +5726,7 @@ const int rv_inst_decomp_rv64[] = {
 	/*              fsflags */ rv_op_illegal,
 	/*                fsrmi */ rv_op_illegal,
 	/*             fsflagsi */ rv_op_illegal,
+	/*			 sfence.vma */ rv_op_illegal,
 };
 
 const int rv_inst_decomp_rv128[] = {
@@ -6030,5 +6048,6 @@ const int rv_inst_decomp_rv128[] = {
 	/*              fsflags */ rv_op_illegal,
 	/*                fsrmi */ rv_op_illegal,
 	/*             fsflagsi */ rv_op_illegal,
+	/*			 sfence.vma */ rv_op_illegal,
 };
 

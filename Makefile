@@ -76,7 +76,7 @@ SNIPER_SIFT_LIB =
 $(warning Disabling SIFT, could not find $$SNIPER_ROOT)
 endif
 # Enable below for additional debugging output
-#CPPFLAGS +=     -DDEBUG
+CPPFLAGS +=     -DDEBUG
 OPT_FLAGS =     -O3 -fwrapv
 DEBUG_FLAGS =   -g
 WARN_FLAGS =    -Wall -Wsign-compare -Wno-deprecated-declarations -Wno-strict-aliasing

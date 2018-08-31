@@ -853,7 +853,7 @@ enum rv_op
 	rv_op_hret = 119,                  	/* Hypervisor Return */
 	rv_op_mret = 120,                  	/* Machine-Mode Return */
 	rv_op_dret = 121,                  	/* Debug-Mode Return */
-	rv_op_sfence_vm = 122,             	/* Supervisor Memory Management Fence */
+	rv_op_sfence_vm = 122,             	/* Supervisor Memory Management Fence - v1.9*/
 	rv_op_wfi = 123,                   	/* Wait For Interrupt */
 	rv_op_csrrw = 124,                 	/* CSR Atomic Read Write */
 	rv_op_csrrs = 125,                 	/* CSR Atomic Set Bit */
@@ -1049,6 +1049,7 @@ enum rv_op
 	rv_op_fsflags = 315,               	/* Set FP Accrued Exception Flags */
 	rv_op_fsrmi = 316,                 	/* Set FP Rounding Mode Immediate */
 	rv_op_fsflagsi = 317,              	/* Set FP Accrued Exception Flags Immediate */
+	rv_op_sfence_vma = 318,             /* Supervisor Memory Management Fence - v1.10 */
 };
 
 /* Primitive data structure */
