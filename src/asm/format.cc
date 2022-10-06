@@ -19,6 +19,8 @@
 	'5'   frs2
 	'6'   frs3
 	'7'   rs1_imm
+    '8'   vd
+    '9'   vs3
 	'i'   imm
 	'o'   offset
 	'c'   csr
@@ -65,3 +67,5 @@ const char* rv_fmt_rs1_offset =            "O\t1,o";
 const char* rv_fmt_rs2_offset =            "O\t2,o";
 const char* rv_fmt_vd_rs1     =            "O\t0,1";
 const char* rv_fmt_vs3_rs1    =            "O\t0,1";
+const char* rv_fmt_vd_rs1_rs2  =           "O\t8,(1),2";
+const char* rv_fmt_vs3_rs1_rs2 =           "O\t9,(1),2";

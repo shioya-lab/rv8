@@ -238,6 +238,20 @@ namespace riscv
 	inst_t emit_vsetvli(ireg5 rd, ireg5 rs1, simm12 imm12);
 	inst_t emit_vle8_v(vreg5 vd, ireg5 rs1);
 	inst_t emit_vse8_v(vreg5 vs3, ireg5 rs1);
+	inst_t emit_vle16_v(vreg5 vd, ireg5 rs1);
+	inst_t emit_vse16_v(vreg5 vs3, ireg5 rs1);
+	inst_t emit_vle32_v(vreg5 vd, ireg5 rs1);
+	inst_t emit_vse32_v(vreg5 vs3, ireg5 rs1);
+	inst_t emit_vle64_v(vreg5 vd, ireg5 rs1);
+	inst_t emit_vse64_v(vreg5 vs3, ireg5 rs1);
+	inst_t emit_vlse8_v(vreg5 vd, ireg5 rs1, ireg5 rs2);
+	inst_t emit_vsse8_v(vreg5 vs3, ireg5 rs1, ireg5 rs2);
+	inst_t emit_vlse16_v(vreg5 vd, ireg5 rs1, ireg5 rs2);
+	inst_t emit_vsse16_v(vreg5 vs3, ireg5 rs1, ireg5 rs2);
+	inst_t emit_vlse32_v(vreg5 vd, ireg5 rs1, ireg5 rs2);
+	inst_t emit_vsse32_v(vreg5 vs3, ireg5 rs1, ireg5 rs2);
+	inst_t emit_vlse64_v(vreg5 vd, ireg5 rs1, ireg5 rs2);
+	inst_t emit_vsse64_v(vreg5 vs3, ireg5 rs1, ireg5 rs2);
 
 	bool asm_lui(assembler &as, ireg5 rd, simm32 imm20);
 	bool asm_auipc(assembler &as, ireg5 rd, offset32 oimm20);
@@ -468,6 +482,20 @@ namespace riscv
 	bool asm_vsetvli(assembler &as, ireg5 rd, ireg5 rs1, simm12 imm12);
 	bool asm_vle8_v(assembler &as, vreg5 vd, ireg5 rs1);
 	bool asm_vse8_v(assembler &as, vreg5 vs3, ireg5 rs1);
+	bool asm_vle16_v(assembler &as, vreg5 vd, ireg5 rs1);
+	bool asm_vse16_v(assembler &as, vreg5 vs3, ireg5 rs1);
+	bool asm_vle32_v(assembler &as, vreg5 vd, ireg5 rs1);
+	bool asm_vse32_v(assembler &as, vreg5 vs3, ireg5 rs1);
+	bool asm_vle64_v(assembler &as, vreg5 vd, ireg5 rs1);
+	bool asm_vse64_v(assembler &as, vreg5 vs3, ireg5 rs1);
+	bool asm_vlse8_v(assembler &as, vreg5 vd, ireg5 rs1, ireg5 rs2);
+	bool asm_vsse8_v(assembler &as, vreg5 vs3, ireg5 rs1, ireg5 rs2);
+	bool asm_vlse16_v(assembler &as, vreg5 vd, ireg5 rs1, ireg5 rs2);
+	bool asm_vsse16_v(assembler &as, vreg5 vs3, ireg5 rs1, ireg5 rs2);
+	bool asm_vlse32_v(assembler &as, vreg5 vd, ireg5 rs1, ireg5 rs2);
+	bool asm_vsse32_v(assembler &as, vreg5 vs3, ireg5 rs1, ireg5 rs2);
+	bool asm_vlse64_v(assembler &as, vreg5 vd, ireg5 rs1, ireg5 rs2);
+	bool asm_vsse64_v(assembler &as, vreg5 vs3, ireg5 rs1, ireg5 rs2);
 }
 
 #endif

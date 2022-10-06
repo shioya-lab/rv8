@@ -147,17 +147,59 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 					}
 					break;
 				case 1:
-					// flw fld flq vle8.v
+					// flw fld flq vle8.v vle16.v vle32.v vle64.v vlse8.v vlse16.v vlse32.v vlse64.v
 					switch (((inst >> 12) & 0b111) /* inst[14:12] */) {
 						case 0:
-							// vle8.v
-							switch (((inst >> 20) & 0b111111111111) /* inst[31:20] */) {
-								case 32: if (rvv && rv64) op = rv_op_vle8_v; break;
+							// vle8.v vlse8.v
+							switch (((inst >> 25) & 0b1111111) /* inst[31:25] */) {
+								case 1:
+									// vle8.v vlse8.v
+									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
+										case 0: if (rvv && rv64) op = rv_op_vle8_v; break;
+										default: if (rvv && rv64) op = rv_op_vlse8_v; break;
+									}
+									break;
 							}
 							break;
 						case 2: if (rvf) op = rv_op_flw; break;
 						case 3: if (rvd) op = rv_op_fld; break;
 						case 4: if (rvq) op = rv_op_flq; break;
+						case 5:
+							// vle16.v vlse16.v
+							switch (((inst >> 25) & 0b1111111) /* inst[31:25] */) {
+								case 1:
+									// vle16.v vlse16.v
+									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
+										case 0: if (rvv && rv64) op = rv_op_vle16_v; break;
+										default: if (rvv && rv64) op = rv_op_vlse16_v; break;
+									}
+									break;
+							}
+							break;
+						case 6:
+							// vle32.v vlse32.v
+							switch (((inst >> 25) & 0b1111111) /* inst[31:25] */) {
+								case 1:
+									// vle32.v vlse32.v
+									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
+										case 0: if (rvv && rv64) op = rv_op_vle32_v; break;
+										default: if (rvv && rv64) op = rv_op_vlse32_v; break;
+									}
+									break;
+							}
+							break;
+						case 7:
+							// vle64.v vlse64.v
+							switch (((inst >> 25) & 0b1111111) /* inst[31:25] */) {
+								case 1:
+									// vle64.v vlse64.v
+									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
+										case 0: if (rvv && rv64) op = rv_op_vle64_v; break;
+										default: if (rvv && rv64) op = rv_op_vlse64_v; break;
+									}
+									break;
+							}
+							break;
 					}
 					break;
 				case 3:
@@ -235,17 +277,59 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 					}
 					break;
 				case 9:
-					// fsw fsd fsq vse8.v
+					// fsw fsd fsq vse8.v vse16.v vse32.v vse64.v vsse8.v vsse16.v vsse32.v vsse64.v
 					switch (((inst >> 12) & 0b111) /* inst[14:12] */) {
 						case 0:
-							// vse8.v
-							switch (((inst >> 20) & 0b111111111111) /* inst[31:20] */) {
-								case 32: if (rvv && rv64) op = rv_op_vse8_v; break;
+							// vse8.v vsse8.v
+							switch (((inst >> 25) & 0b1111111) /* inst[31:25] */) {
+								case 1:
+									// vse8.v vsse8.v
+									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
+										case 0: if (rvv && rv64) op = rv_op_vse8_v; break;
+										default: if (rvv && rv64) op = rv_op_vsse8_v; break;
+									}
+									break;
 							}
 							break;
 						case 2: if (rvf) op = rv_op_fsw; break;
 						case 3: if (rvd) op = rv_op_fsd; break;
 						case 4: if (rvq) op = rv_op_fsq; break;
+						case 5:
+							// vse16.v vsse16.v
+							switch (((inst >> 25) & 0b1111111) /* inst[31:25] */) {
+								case 1:
+									// vse16.v vsse16.v
+									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
+										case 0: if (rvv && rv64) op = rv_op_vse16_v; break;
+										default: if (rvv && rv64) op = rv_op_vsse16_v; break;
+									}
+									break;
+							}
+							break;
+						case 6:
+							// vse32.v vsse32.v
+							switch (((inst >> 25) & 0b1111111) /* inst[31:25] */) {
+								case 1:
+									// vse32.v vsse32.v
+									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
+										case 0: if (rvv && rv64) op = rv_op_vse32_v; break;
+										default: if (rvv && rv64) op = rv_op_vsse32_v; break;
+									}
+									break;
+							}
+							break;
+						case 7:
+							// vse64.v vsse64.v
+							switch (((inst >> 25) & 0b1111111) /* inst[31:25] */) {
+								case 1:
+									// vse64.v vsse64.v
+									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
+										case 0: if (rvv && rv64) op = rv_op_vse64_v; break;
+										default: if (rvv && rv64) op = rv_op_vsse64_v; break;
+									}
+									break;
+							}
+							break;
 					}
 					break;
 				case 11:

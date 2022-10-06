@@ -2586,6 +2586,154 @@ inst_t riscv::emit_vse8_v(vreg5 vs3, ireg5 rs1)
 	return encode_inst(dec);
 }
 
+inst_t riscv::emit_vle16_v(vreg5 vd, ireg5 rs1)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vle16_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vse16_v(vreg5 vs3, ireg5 rs1)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vse16_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vle32_v(vreg5 vd, ireg5 rs1)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vle32_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vse32_v(vreg5 vs3, ireg5 rs1)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vse32_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vle64_v(vreg5 vd, ireg5 rs1)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vle64_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vse64_v(vreg5 vs3, ireg5 rs1)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vse64_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vlse8_v(vreg5 vd, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid() && rs2.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vlse8_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vsse8_v(vreg5 vs3, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid() && rs2.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vsse8_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vlse16_v(vreg5 vd, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid() && rs2.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vlse16_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vsse16_v(vreg5 vs3, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid() && rs2.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vsse16_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vlse32_v(vreg5 vd, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid() && rs2.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vlse32_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vsse32_v(vreg5 vs3, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid() && rs2.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vsse32_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vlse64_v(vreg5 vd, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid() && rs2.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vlse64_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vsse64_v(vreg5 vs3, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid() && rs2.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vsse64_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	return encode_inst(dec);
+}
+
 
 bool riscv::asm_lui(assembler &as, ireg5 rd, simm32 imm20)
 {
@@ -5376,6 +5524,168 @@ bool riscv::asm_vse8_v(assembler &as, vreg5 vs3, ireg5 rs1)
 	dec.op = rv_op_vse8_v;
 /* dec.? = vs3 unhandled */
 	dec.rs1 = rs1;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vle16_v(assembler &as, vreg5 vd, ireg5 rs1)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vle16_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vse16_v(assembler &as, vreg5 vs3, ireg5 rs1)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vse16_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vle32_v(assembler &as, vreg5 vd, ireg5 rs1)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vle32_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vse32_v(assembler &as, vreg5 vs3, ireg5 rs1)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vse32_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vle64_v(assembler &as, vreg5 vd, ireg5 rs1)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vle64_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vse64_v(assembler &as, vreg5 vs3, ireg5 rs1)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vse64_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vlse8_v(assembler &as, vreg5 vd, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid() && rs2.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vlse8_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vsse8_v(assembler &as, vreg5 vs3, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid() && rs2.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vsse8_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vlse16_v(assembler &as, vreg5 vd, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid() && rs2.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vlse16_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vsse16_v(assembler &as, vreg5 vs3, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid() && rs2.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vsse16_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vlse32_v(assembler &as, vreg5 vd, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid() && rs2.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vlse32_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vsse32_v(assembler &as, vreg5 vs3, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid() && rs2.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vsse32_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vlse64_v(assembler &as, vreg5 vd, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid() && rs2.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vlse64_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vsse64_v(assembler &as, vreg5 vs3, ireg5 rs1, ireg5 rs2)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid() && rs2.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vsse64_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	dec.rs2 = rs2;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
