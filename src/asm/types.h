@@ -130,6 +130,7 @@ namespace riscv {
 	using uimm5 = uimm_t<5>;
 	using ireg5 = uimm_t<5>;
 	using freg5 = uimm_t<5>;
+	using vreg5 = uimm_t<5>;
 	using arg4 = uimm_t<4>;
 	using arg3 = uimm_t<3>;
 	using arg1 = uimm_t<1>;

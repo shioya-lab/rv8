@@ -9,7 +9,7 @@
 
 /* Execute Instruction RV32 */
 
-template <bool rvi, bool rvm, bool rva, bool rvs, bool rvf, bool rvd, bool rvq, bool rvc, typename T, typename P>
+template <bool rvi, bool rvm, bool rva, bool rvs, bool rvf, bool rvd, bool rvq, bool rvc, bool rvv, typename T, typename P>
 typename P::ux exec_inst_rv32(T &dec, P &proc, typename P::ux pc_offset)
 {
 	using namespace riscv;
@@ -565,7 +565,7 @@ typename P::ux exec_inst_rv32(T &dec, P &proc, typename P::ux pc_offset)
 
 /* Execute Instruction RV64 */
 
-template <bool rvi, bool rvm, bool rva, bool rvs, bool rvf, bool rvd, bool rvq, bool rvc, typename T, typename P>
+template <bool rvi, bool rvm, bool rva, bool rvs, bool rvf, bool rvd, bool rvq, bool rvc, bool rvv, typename T, typename P>
 typename P::ux exec_inst_rv64(T &dec, P &proc, typename P::ux pc_offset)
 {
 	using namespace riscv;
@@ -1311,7 +1311,7 @@ typename P::ux exec_inst_rv64(T &dec, P &proc, typename P::ux pc_offset)
 
 /* Execute Instruction RV128 */
 
-template <bool rvi, bool rvm, bool rva, bool rvs, bool rvf, bool rvd, bool rvq, bool rvc, typename T, typename P>
+template <bool rvi, bool rvm, bool rva, bool rvs, bool rvf, bool rvd, bool rvq, bool rvc, bool rvv, typename T, typename P>
 typename P::ux exec_inst_rv128(T &dec, P &proc, typename P::ux pc_offset)
 {
 	using namespace riscv;

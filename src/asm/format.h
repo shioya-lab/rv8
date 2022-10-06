@@ -43,6 +43,8 @@ extern "C" {
 	extern const char* rv_fmt_rd_rs2;
 	extern const char* rv_fmt_rs1_offset;
 	extern const char* rv_fmt_rs2_offset;
+    extern const char* rv_fmt_vd_rs1;
+    extern const char* rv_fmt_vs3_rs1;
 }
 
 #endif

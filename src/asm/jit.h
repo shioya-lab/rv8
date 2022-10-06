@@ -235,6 +235,9 @@ namespace riscv
 	inst_t emit_fcvt_q_lu(freg5 frd, ireg5 rs1, arg3 rm);
 	inst_t emit_fmv_x_q(ireg5 rd, freg5 frs1);
 	inst_t emit_fmv_q_x(freg5 frd, ireg5 rs1);
+	inst_t emit_vsetvli(ireg5 rd, ireg5 rs1, simm12 imm12);
+	inst_t emit_vle8_v(vreg5 vd, ireg5 rs1);
+	inst_t emit_vse8_v(vreg5 vs3, ireg5 rs1);
 
 	bool asm_lui(assembler &as, ireg5 rd, simm32 imm20);
 	bool asm_auipc(assembler &as, ireg5 rd, offset32 oimm20);
@@ -462,6 +465,9 @@ namespace riscv
 	bool asm_fcvt_q_lu(assembler &as, freg5 frd, ireg5 rs1, arg3 rm);
 	bool asm_fmv_x_q(assembler &as, ireg5 rd, freg5 frs1);
 	bool asm_fmv_q_x(assembler &as, freg5 frd, ireg5 rs1);
+	bool asm_vsetvli(assembler &as, ireg5 rd, ireg5 rs1, simm12 imm12);
+	bool asm_vle8_v(assembler &as, vreg5 vd, ireg5 rs1);
+	bool asm_vse8_v(assembler &as, vreg5 vs3, ireg5 rs1);
 }
 
 #endif

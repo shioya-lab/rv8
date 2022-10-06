@@ -9,7 +9,7 @@
 
 /* Decode Instruction Opcode */
 
-template <bool rv32, bool rv64, bool rv128, bool rvi, bool rvm, bool rva, bool rvs, bool rvf, bool rvd, bool rvq, bool rvc>
+template <bool rv32, bool rv64, bool rv128, bool rvi, bool rvm, bool rva, bool rvs, bool rvf, bool rvd, bool rvq, bool rvc, bool rvv>
 inline opcode_t decode_inst_op(riscv::inst_t inst)
 {
 	opcode_t op = rv_op_illegal;
@@ -147,8 +147,14 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 					}
 					break;
 				case 1:
-					// flw fld flq
+					// flw fld flq vle8.v
 					switch (((inst >> 12) & 0b111) /* inst[14:12] */) {
+						case 0:
+							// vle8.v
+							switch (((inst >> 20) & 0b111111111111) /* inst[31:20] */) {
+								case 32: if (rvv && rv64) op = rv_op_vle8_v; break;
+							}
+							break;
 						case 2: if (rvf) op = rv_op_flw; break;
 						case 3: if (rvd) op = rv_op_fld; break;
 						case 4: if (rvq) op = rv_op_flq; break;
@@ -229,8 +235,14 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 					}
 					break;
 				case 9:
-					// fsw fsd fsq
+					// fsw fsd fsq vse8.v
 					switch (((inst >> 12) & 0b111) /* inst[14:12] */) {
+						case 0:
+							// vse8.v
+							switch (((inst >> 20) & 0b111111111111) /* inst[31:20] */) {
+								case 32: if (rvv && rv64) op = rv_op_vse8_v; break;
+							}
+							break;
 						case 2: if (rvf) op = rv_op_fsw; break;
 						case 3: if (rvd) op = rv_op_fsd; break;
 						case 4: if (rvq) op = rv_op_fsq; break;
@@ -576,6 +588,12 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 								case 0: if (rvq) op = rv_op_fmv_q_x; break;
 							}
 							break;
+					}
+					break;
+				case 21:
+					// vsetvli
+					switch (((inst >> 28) & 0b1000) | ((inst >> 12) & 0b0111) /* inst[31|14:12] */) {
+						case 7: if (rvv && rv64) op = rv_op_vsetvli; break;
 					}
 					break;
 				case 22:

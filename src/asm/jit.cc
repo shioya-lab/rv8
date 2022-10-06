@@ -2555,6 +2555,37 @@ inst_t riscv::emit_fmv_q_x(freg5 frd, ireg5 rs1)
 	return encode_inst(dec);
 }
 
+inst_t riscv::emit_vsetvli(ireg5 rd, ireg5 rs1, simm12 imm12)
+{
+	decode dec;
+	if (!(rd.valid() && rs1.valid() && imm12.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vsetvli;
+	dec.rd = rd;
+	dec.rs1 = rs1;
+	dec.imm = imm12;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vle8_v(vreg5 vd, ireg5 rs1)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vle8_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	return encode_inst(dec);
+}
+
+inst_t riscv::emit_vse8_v(vreg5 vs3, ireg5 rs1)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vse8_v;
+/* dec.? = vs3 unhandled */
+	dec.rs1 = rs1;
+	return encode_inst(dec);
+}
+
 
 bool riscv::asm_lui(assembler &as, ireg5 rd, simm32 imm20)
 {
@@ -5310,6 +5341,40 @@ bool riscv::asm_fmv_q_x(assembler &as, freg5 frd, ireg5 rs1)
 	if (!(frd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_fmv_q_x;
 	dec.rd = frd;
+	dec.rs1 = rs1;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vsetvli(assembler &as, ireg5 rd, ireg5 rs1, simm12 imm12)
+{
+	decode dec;
+	if (!(rd.valid() && rs1.valid() && imm12.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vsetvli;
+	dec.rd = rd;
+	dec.rs1 = rs1;
+	dec.imm = imm12;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vle8_v(assembler &as, vreg5 vd, ireg5 rs1)
+{
+	decode dec;
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vle8_v;
+/* dec.? = vd unhandled */
+	dec.rs1 = rs1;
+	as.add_inst(encode_inst(dec));
+	return true;
+}
+
+bool riscv::asm_vse8_v(assembler &as, vreg5 vs3, ireg5 rs1)
+{
+	decode dec;
+	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vse8_v;
+/* dec.? = vs3 unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;

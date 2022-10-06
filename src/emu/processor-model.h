@@ -13,11 +13,11 @@ namespace riscv {
 	#define RV_64  /*rv32*/false, /*rv64*/true,  /*rv128*/false
 	#define RV_128 /*rv32*/false, /*rv64*/false, /*rv128*/true
 
-	#define RV_I      /*I*/true, /*M*/false, /*A*/false, /*S*/true, /*F*/false,/*D*/false,/*Q*/false,/*C*/false
-	#define RV_IMA    /*I*/true, /*M*/true,  /*A*/true,  /*S*/true, /*F*/false,/*D*/false,/*Q*/false,/*C*/false
-	#define RV_IMAC   /*I*/true, /*M*/true,  /*A*/true,  /*S*/true, /*F*/false,/*D*/false,/*Q*/false,/*C*/true
-	#define RV_IMAFD  /*I*/true, /*M*/true,  /*A*/true,  /*S*/true, /*F*/true, /*D*/true, /*Q*/false,/*C*/false
-	#define RV_IMAFDC /*I*/true, /*M*/true,  /*A*/true,  /*S*/true, /*F*/true, /*D*/true, /*Q*/false,/*C*/true
+	#define RV_I      /*I*/true, /*M*/false, /*A*/false, /*S*/true, /*F*/false,/*D*/false,/*Q*/false,/*C*/false, false/*v*/
+	#define RV_IMA    /*I*/true, /*M*/true,  /*A*/true,  /*S*/true, /*F*/false,/*D*/false,/*Q*/false,/*C*/false, false/*v*/
+	#define RV_IMAC   /*I*/true, /*M*/true,  /*A*/true,  /*S*/true, /*F*/false,/*D*/false,/*Q*/false,/*C*/true , false/*v*/
+	#define RV_IMAFD  /*I*/true, /*M*/true,  /*A*/true,  /*S*/true, /*F*/true, /*D*/true, /*Q*/false,/*C*/false, false/*v*/
+	#define RV_IMAFDC /*I*/true, /*M*/true,  /*A*/true,  /*S*/true, /*F*/true, /*D*/true, /*Q*/false,/*C*/true , false/*v*/
 
 	template <typename P>
 	static constexpr typename P::ux BASE(rv_isa isa) { return typename P::ux(isa) << (P::xlen-2); }

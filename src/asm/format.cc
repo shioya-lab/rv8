@@ -5,7 +5,7 @@
 #include "format.h"
 
 /*
-	Instruction Argument Formats 
+	Instruction Argument Formats
 
 	'\t'  literal
 	'('   literal
@@ -63,3 +63,5 @@ const char* rv_fmt_rd_rs1 =                "O\t0,1";
 const char* rv_fmt_rd_rs2 =                "O\t0,2";
 const char* rv_fmt_rs1_offset =            "O\t1,o";
 const char* rv_fmt_rs2_offset =            "O\t2,o";
+const char* rv_fmt_vd_rs1     =            "O\t0,1";
+const char* rv_fmt_vs3_rs1    =            "O\t0,1";

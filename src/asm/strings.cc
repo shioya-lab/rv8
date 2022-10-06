@@ -352,6 +352,9 @@ const char* rv_inst_name_sym[] = {
 	"c.sq",
 	"c.lqsp",
 	"c.sqsp",
+	"vsetvli",
+	"vle8.v",
+	"vse8.v",
 	"nop",
 	"mv",
 	"not",
@@ -459,6 +462,8 @@ const char* rv_operand_name_sym[] = {
 	"cimmw",
 	"cimmd",
 	"cimmq",
+	"vd",
+	"vs3",
 	nullptr
 };
 
@@ -488,6 +493,7 @@ const char* rv_operand_type_sym[] = {
 	"uimm10",
 	"simm10",
 	"simm9",
+	"vreg5",
 	nullptr
 };
 

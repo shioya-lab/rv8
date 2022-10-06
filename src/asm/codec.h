@@ -31,7 +31,7 @@
  * Encoding instructions
  * =====================
  * The encode function encodes the operands in struct rv_decode using:
- * op, imm, rd, rs1, rs2, etc. The encode function only depends on 
+ * op, imm, rd, rs1, rs2, etc. The encode function only depends on
  * rv_decode fields and it is up to the caller to save the instruction.
  * Returns the encoded instruction.
  *
@@ -211,11 +211,11 @@ namespace riscv
 
 	/* Decode Instruction */
 
-	template <typename T, bool rv32, bool rv64, bool rv128, bool rvi = true, bool rvm = true, bool rva = true, bool rvs = true, bool rvf = true, bool rvd = true, bool rvq = true, bool rvc = true>
+    template <typename T, bool rv32, bool rv64, bool rv128, bool rvi = true, bool rvm = true, bool rva = true, bool rvs = true, bool rvf = true, bool rvd = true, bool rvq = true, bool rvc = true, bool rvv=true>
 	inline void decode_inst(T &dec, inst_t inst)
 	{
-		dec.op = decode_inst_op<rv32,rv64,rv128,rvi,rvm,rva,rvs,rvf,rvd,rvq,rvc>(inst);
-		decode_inst_type<T>(dec, inst);
+        dec.op = decode_inst_op<rv32,rv64,rv128,rvi,rvm,rva,rvs,rvf,rvd,rvq,rvc,rvv>(inst);
+        decode_inst_type<T>(dec, inst);
 	}
 
 	template <typename T>
