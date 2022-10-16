@@ -39,6 +39,7 @@ static const char* OPCODE_FULLNAMES_FILE      = "opcode-fullnames";
 static const char* OPCODE_DESCRIPTIONS_FILE   = "opcode-descriptions";
 static const char* OPCODE_PSEUDOCODE_C_FILE   = "opcode-pseudocode-c";
 static const char* OPCODE_PSEUDOCODE_ALT_FILE = "opcode-pseudocode-alt";
+static const char* OPCODE_VECTOR              = "vector_opcodes";
 
 const rv_primitive_type rv_primitive_type_table[] = {
 	{ rvs_ext, rvt_sx,   "x",      "sx",   "r", "%ld",   "%lx",   "l",     "signed long" },       /* LP64 and ILP32, not LLP64 */
@@ -1059,7 +1060,7 @@ void rv_meta_model::parse_pseudo(std::vector<std::string> &part)
 
 		// use the format from the meta/pseudo definition
 		pseudo_opcode->format = format;
-		
+
 		// derive operands from the format
 		std::vector<std::string> operand_names = split(format->operands, ",");
 		for (auto operand_name : operand_names) {
@@ -1194,5 +1195,6 @@ bool rv_meta_model::read_metadata(std::string dirname)
 	for (auto part : read_file(dirname + std::string("/") + OPCODE_DESCRIPTIONS_FILE)) parse_opcode_description(part);
 	for (auto part : read_file(dirname + std::string("/") + OPCODE_PSEUDOCODE_C_FILE)) parse_opcode_pseudocode_c(part);
 	for (auto part : read_file(dirname + std::string("/") + OPCODE_PSEUDOCODE_ALT_FILE)) parse_opcode_pseudocode_alt(part);
+	for (auto part : read_file(dirname + std::string("/") + OPCODE_VECTOR)) parse_opcode(part);
 	return true;
 }

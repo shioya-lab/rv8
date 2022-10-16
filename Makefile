@@ -83,7 +83,7 @@ WARN_FLAGS =    -Wall -Wsign-compare -Wno-deprecated-declarations -Wno-strict-al
 CFLAGS =        $(DEBUG_FLAGS) $(OPT_FLAGS) $(WARN_FLAGS) $(INCLUDES)
 CCFLAGS =       -std=c11 -D_DEFAULT_SOURCE $(CFLAGS)
 CXXFLAGS =      -std=c++1y -fno-rtti -fno-exceptions $(CFLAGS)
-LDFLAGS =       
+LDFLAGS =
 ASM_FLAGS =     -S -masm=intel
 MACOS_LDFLAGS = -Wl,-pagezero_size,0x1000 -Wl,-no_pie -image_base 0x7ffe00000000
 LINUX_LDFLAGS = -pie -Wl,-Ttext-segment=0x7ffe00000000
@@ -201,6 +201,7 @@ RV_META_DATA =  $(META_DIR)/codecs \
                 $(META_DIR)/extensions \
                 $(META_DIR)/formats \
                 $(META_DIR)/opcodes \
+                $(META_DIR)/vector_opcodes \
                 $(META_DIR)/opcode-descriptions \
                 $(META_DIR)/opcode-fullnames \
                 $(META_DIR)/opcode-pseudocode-alt \

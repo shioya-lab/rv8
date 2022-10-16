@@ -51,6 +51,7 @@ extern "C" {
 
 extern const char* rv_ireg_name_sym[];
 extern const char* rv_freg_name_sym[];
+extern const char* rv_vreg_name_sym[];
 extern const char* rv_inst_name_sym[];
 extern const char* rv_operand_name_sym[];
 extern const char* rv_operand_type_sym[];
@@ -91,6 +92,15 @@ static void print_strings_cc(rv_gen *gen)
 	printf("const char* rv_freg_name_sym[] = {\n");
 	for (auto &reg : gen->registers) {
 		if (reg->type != "freg") continue;
+		printf("\t\"%s\",\n", reg->alias.c_str());
+	}
+	printf("\tnullptr\n");
+	printf("};\n\n");
+
+	// Vector register names
+	printf("const char* rv_vreg_name_sym[] = {\n");
+	for (auto &reg : gen->registers) {
+		if (reg->type != "vreg") continue;
 		printf("\t\"%s\",\n", reg->alias.c_str());
 	}
 	printf("\tnullptr\n");
