@@ -6,5 +6,5 @@
 	url = https://github.com/michaeljclark/asmjit.git
 [submodule "meta"]
 	path = meta
-	url = https://github.com/nus-comparch/riscv-meta.git
+	url = https://github.com/msyksphinz-self/riscv-meta.git
 	branch = sift
