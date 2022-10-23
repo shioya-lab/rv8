@@ -152,6 +152,8 @@ namespace riscv {
 				case '5': args += rv_freg_name_sym[dec.rs2]; break;
 				case '6': args += rv_freg_name_sym[dec.rs3]; break;
 				case '7': args += format_string("%d", dec.rs1); break;
+				case '8': args += rv_vreg_name_sym[dec.rd]; break;
+				case '9': args += rv_vreg_name_sym[dec.rs3]; break;
 				case 'i': args += format_string("%d", dec.imm); break;
 				case 'o': args += format_string("pc %c %td",
 					intptr_t(dec.imm) < 0 ? '-' : '+',
