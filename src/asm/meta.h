@@ -638,6 +638,18 @@ enum rv_codec
 	rv_codec_css_swsp,
 	rv_codec_css_sdsp,
 	rv_codec_css_sqsp,
+	rv_codec_i_lv,
+	rv_codec_s_v,
+	rv_codec_i_vs,
+	rv_codec_s_vs,
+	rv_codec_i_vsv,
+	rv_codec_s_vsv,
+	rv_codec_i_vv,
+	rv_codec_i_vr,
+	rv_codec_i_vf,
+	rv_codec_i_vff,
+	rv_codec_i_vi,
+	rv_codec_i_v,
 };
 
 enum rv_operand_name

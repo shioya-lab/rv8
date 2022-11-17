@@ -29,7 +29,7 @@
 	'A'   aq
 	'R'   rl
     'b'   vs1
-    'c'   vs2
+    'd'   vs2
 */
 
 const char* rv_fmt_none =                  "O\t";
@@ -67,12 +67,13 @@ const char* rv_fmt_rd_rs1 =                "O\t0,1";
 const char* rv_fmt_rd_rs2 =                "O\t0,2";
 const char* rv_fmt_rs1_offset =            "O\t1,o";
 const char* rv_fmt_rs2_offset =            "O\t2,o";
-const char* rv_fmt_vd_rs1     =            "O\t8,1";
-const char* rv_fmt_vs3_rs1    =            "O\t9,1";
+const char* rv_fmt_vd_rs1     =            "O\t8,(1)";
+const char* rv_fmt_vs3_rs1    =            "O\t9,(1)";
 const char* rv_fmt_vd_rs1_rs2  =           "O\t8,(1),2";
 const char* rv_fmt_vs3_rs1_rs2 =           "O\t9,(1),2";
-const char* rv_fmt_vd_vs2_vs1   =          "O\t8,c,b";
-const char* rv_fmt_vd_vs2_rs1   =          "O\t8,c,1";
+const char* rv_fmt_vd_vs2_vs1   =          "O\t8,d,b";
+const char* rv_fmt_vd_vs2_rs1   =          "O\t8,d,1";
+const char* rv_fmt_vd_vs2_frs1  =          "O\t8,d,4";
 const char* rv_fmt_vd_vs2_simm5 =          "O\t8,b,i";
 const char* rv_fmt_vd_vs2 =                "O\t8,b";
 const char* rv_fmt_rd_imm12_oimm12 =       "O\t0,i,i";

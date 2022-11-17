@@ -312,4 +312,49 @@ template <typename T> inline inst_t encode_uj(T &dec)
 	return operand_rd::encode(dec.rd) | operand_jimm20::encode(dec.imm);
 }
 
+/* Encode Vector Unit Stride Load */
+template <typename T> inline inst_t encode_i_lv(T &dec)
+{
+  return 0;
+}
+
+/* Encode Vector Unit Stride Store */
+template <typename T> inline inst_t encode_s_v(T &dec)
+{
+  return 0;
+}
+
+/* Encode Vector Strided Load */
+template <typename T> inline inst_t encode_i_vs(T &dec)
+{
+  return 0;
+}
+
+/* Encode Vector Strided Store */
+template <typename T> inline inst_t encode_s_vs(T &dec)
+{
+  return 0;
+}
+
+/* Encode Vector Indexed Load */
+template <typename T> inline inst_t encode_i_vsv(T &dec)
+{
+  return 0;
+}
+
+/* Encode Vector Indexed Store */
+template <typename T> inline inst_t encode_s_vsv(T &dec)
+{
+  return 0;
+}
+
+
+template <typename T> inline inst_t encode_i_vv(T &dec) { return 0; }
+template <typename T> inline inst_t encode_i_vr(T &dec) { return 0; }
+template <typename T> inline inst_t encode_i_vf(T &dec) { return 0; }
+template <typename T> inline inst_t encode_i_vff(T &dec) { return 0; }
+template <typename T> inline inst_t encode_i_vi(T &dec) { return 0; }
+template <typename T> inline inst_t encode_i_v(T &dec) { return 0; }
+
+
 #endif

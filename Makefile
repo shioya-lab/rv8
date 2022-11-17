@@ -69,7 +69,7 @@ ifneq ($(SNIPER_ROOT),)
 INCLUDES +=     -I$(SNIPER_ROOT)
 CPPFLAGS +=     -DENABLE_SIFT=1
 SNIPER_SIFT_LIB = $(SNIPER_ROOT)/sift/libsift.a -lbz2 -lz
-$(warning Enabling SIFT, using $(SNIPER_ROOT) as Sniper root)
+
 else
 CPPFLAGS =
 SNIPER_SIFT_LIB =

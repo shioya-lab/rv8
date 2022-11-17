@@ -1685,6 +1685,18 @@ inline void decode_inst_type(T &dec, riscv::inst_t inst)
 		case rv_codec_css_swsp:         riscv::decode_css_swsp(dec, inst);                 break;
 		case rv_codec_css_sdsp:         riscv::decode_css_sdsp(dec, inst);                 break;
 		case rv_codec_css_sqsp:         riscv::decode_css_sqsp(dec, inst);                 break;
+		case rv_codec_i_lv:             riscv::decode_i_lv(dec, inst);                     break;
+		case rv_codec_s_v:              riscv::decode_s_v(dec, inst);                      break;
+		case rv_codec_i_vs:             riscv::decode_i_vs(dec, inst);                     break;
+		case rv_codec_s_vs:             riscv::decode_s_vs(dec, inst);                     break;
+		case rv_codec_i_vsv:            riscv::decode_i_vsv(dec, inst);                    break;
+		case rv_codec_s_vsv:            riscv::decode_s_vsv(dec, inst);                    break;
+		case rv_codec_i_vv:             riscv::decode_i_vv(dec, inst);                     break;
+		case rv_codec_i_vr:             riscv::decode_i_vr(dec, inst);                     break;
+		case rv_codec_i_vf:             riscv::decode_i_vf(dec, inst);                     break;
+		case rv_codec_i_vff:            riscv::decode_i_vff(dec, inst);                    break;
+		case rv_codec_i_vi:             riscv::decode_i_vi(dec, inst);                     break;
+		case rv_codec_i_v:              riscv::decode_i_v(dec, inst);                      break;
 	};
 }
 
@@ -1743,6 +1755,18 @@ inline riscv::inst_t encode_inst(T &dec)
 		case rv_codec_css_swsp:         return inst |= riscv::encode_css_swsp(dec);        break;
 		case rv_codec_css_sdsp:         return inst |= riscv::encode_css_sdsp(dec);        break;
 		case rv_codec_css_sqsp:         return inst |= riscv::encode_css_sqsp(dec);        break;
+		case rv_codec_i_lv:             return inst |= riscv::encode_i_lv(dec);            break;
+		case rv_codec_s_v:              return inst |= riscv::encode_s_v(dec);             break;
+		case rv_codec_i_vs:             return inst |= riscv::encode_i_vs(dec);            break;
+		case rv_codec_s_vs:             return inst |= riscv::encode_s_vs(dec);            break;
+		case rv_codec_i_vsv:            return inst |= riscv::encode_i_vsv(dec);           break;
+		case rv_codec_s_vsv:            return inst |= riscv::encode_s_vsv(dec);           break;
+		case rv_codec_i_vv:             return inst |= riscv::encode_i_vv(dec);            break;
+		case rv_codec_i_vr:             return inst |= riscv::encode_i_vr(dec);            break;
+		case rv_codec_i_vf:             return inst |= riscv::encode_i_vf(dec);            break;
+		case rv_codec_i_vff:            return inst |= riscv::encode_i_vff(dec);           break;
+		case rv_codec_i_vi:             return inst |= riscv::encode_i_vi(dec);            break;
+		case rv_codec_i_v:              return inst |= riscv::encode_i_v(dec);             break;
 	};
 	return inst;
 }

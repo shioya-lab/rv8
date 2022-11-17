@@ -419,4 +419,122 @@ template <typename T> inline void decode_uj(T &dec, inst_t inst)
 	dec.imm = operand_jimm20::decode(inst);
 }
 
+/* Decode Vector Unit-Stride Load */
+template <typename T> inline void decode_i_lv(T &dec, inst_t inst)
+{
+	dec.rd = operand_rd::decode(inst);
+	dec.rs1 = operand_rs1::decode(inst);
+	dec.rs2 = rv_ireg_zero;
+	dec.imm = 0;
+}
+
+/* Decode Vector Unit-Stride Store */
+template <typename T> inline void decode_s_v(T &dec, inst_t inst)
+{
+	dec.rd = rv_ireg_zero;
+	dec.rs1 = operand_rs1::decode(inst);
+	dec.rs2 = rv_ireg_zero;
+	dec.rs3 = operand_rd::decode(inst);
+	dec.imm = 0;
+}
+
+
+/* Decode Vector Strided Load */
+template <typename T> inline void decode_i_vs(T &dec, inst_t inst)
+{
+	dec.rd = operand_rd::decode(inst);
+	dec.rs1 = operand_rs1::decode(inst);
+	dec.rs2 = operand_rs2::decode(inst);
+	dec.imm = 0;
+}
+
+/* Decode Vector Strided Store */
+template <typename T> inline void decode_s_vs(T &dec, inst_t inst)
+{
+	dec.rd = rv_ireg_zero;
+	dec.rs1 = operand_rs1::decode(inst);
+	dec.rs2 = operand_rs2::decode(inst);
+	dec.rs3 = operand_rd::decode(inst);
+	dec.imm = 0;
+}
+
+
+/* Decode Vector Indxed Load */
+template <typename T> inline void decode_i_vsv(T &dec, inst_t inst)
+{
+	dec.rd = operand_rd::decode(inst);
+	dec.rs1 = operand_rs1::decode(inst);
+	dec.rs2 = operand_rs2::decode(inst);
+	dec.imm = 0;
+}
+
+/* Decode Vector Indexed Store */
+template <typename T> inline void decode_s_vsv(T &dec, inst_t inst)
+{
+	dec.rd = rv_ireg_zero;
+	dec.rs1 = operand_rs1::decode(inst);
+	dec.rs2 = operand_rs2::decode(inst);
+	dec.rs3 = operand_rd::decode(inst);
+	dec.imm = 0;
+}
+
+
+template <typename T> inline void decode_i_vv(T &dec, inst_t inst)
+{
+	dec.rd = operand_rd::decode(inst);
+	dec.rs1 = operand_rs1::decode(inst);
+	dec.rs2 = operand_rs2::decode(inst);
+	dec.rs3 = rv_ireg_zero;
+	dec.imm = 0;
+}
+
+
+template <typename T> inline void decode_i_vr(T &dec, inst_t inst)
+{
+	dec.rd = operand_rd::decode(inst);
+	dec.rs1 = operand_rs1::decode(inst);
+	dec.rs2 = operand_rs2::decode(inst);
+	dec.rs3 = rv_ireg_zero;
+	dec.imm = 0;
+}
+
+template <typename T> inline void decode_i_vf(T &dec, inst_t inst)
+{
+	dec.rd = operand_rd::decode(inst);
+	dec.rs1 = operand_rs1::decode(inst);
+	dec.rs2 = operand_rs2::decode(inst);
+	dec.rs3 = rv_ireg_zero;
+	dec.imm = 0;
+}
+
+
+template <typename T> inline void decode_i_vff(T &dec, inst_t inst)
+{
+	dec.rd = operand_rd::decode(inst);
+	dec.rs1 = operand_rs1::decode(inst);
+	dec.rs2 = operand_rs2::decode(inst);
+	dec.rs3 = operand_rd::decode(inst);
+	dec.imm = 0;
+}
+
+
+template <typename T> inline void decode_i_vi(T &dec, inst_t inst)
+{
+	dec.rd = operand_rd::decode(inst);
+	dec.rs1 = operand_rs1::decode(inst);
+	dec.rs2 = rv_ireg_zero;
+	dec.rs3 = rv_ireg_zero;
+	dec.imm = 0;
+}
+
+template <typename T> inline void decode_i_v(T &dec, inst_t inst)
+{
+	dec.rd = operand_rd::decode(inst);
+	dec.rs1 = rv_ireg_zero;
+	dec.rs2 = rv_ireg_zero;
+	dec.rs3 = rv_ireg_zero;
+	dec.imm = 0;
+}
+
+
 #endif
