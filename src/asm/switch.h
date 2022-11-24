@@ -1326,31 +1326,31 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 							}
 							break;
 						case 9:
-							// vfdiv.vx vfmul.vx vfrsub.vx vfmadd.vx vfnmadd.vx vfmsub.vx vfnmsub.vx vfmacc.vx vfnmacc.vx vfmsac.vx vfnmsac.vx vfwadd.vx ...
+							// vfdiv.vx vfmul.vv vfrsub.vv vfmadd.vv vfnmadd.vv vfmsub.vv vfnmsub.vv vfmacc.vv vfnmacc.vv vfmsac.vv vfnmsac.vv vfwadd.vv ...
 							switch (((inst >> 26) & 0b11111) /* inst[30:26] */) {
 								case 0: if (rvv && rv64) op = rv_op_vfdiv_vx; break;
-								case 4: if (rvv && rv64) op = rv_op_vfmul_vx; break;
-								case 7: if (rvv && rv64) op = rv_op_vfrsub_vx; break;
-								case 8: if (rvv && rv64) op = rv_op_vfmadd_vx; break;
-								case 9: if (rvv && rv64) op = rv_op_vfnmadd_vx; break;
-								case 10: if (rvv && rv64) op = rv_op_vfmsub_vx; break;
-								case 11: if (rvv && rv64) op = rv_op_vfnmsub_vx; break;
-								case 12: if (rvv && rv64) op = rv_op_vfmacc_vx; break;
-								case 13: if (rvv && rv64) op = rv_op_vfnmacc_vx; break;
-								case 14: if (rvv && rv64) op = rv_op_vfmsac_vx; break;
-								case 15: if (rvv && rv64) op = rv_op_vfnmsac_vx; break;
-								case 16: if (rvv && rv64) op = rv_op_vfwadd_vx; break;
-								case 17: if (rvv && rv64) op = rv_op_vfwredsum_vx; break;
-								case 18: if (rvv && rv64) op = rv_op_vfwsub_vx; break;
-								case 19: if (rvv && rv64) op = rv_op_vfwredosum_vx; break;
+								case 4: if (rvv && rv64) op = rv_op_vfmul_vv; break;
+								case 7: if (rvv && rv64) op = rv_op_vfrsub_vv; break;
+								case 8: if (rvv && rv64) op = rv_op_vfmadd_vv; break;
+								case 9: if (rvv && rv64) op = rv_op_vfnmadd_vv; break;
+								case 10: if (rvv && rv64) op = rv_op_vfmsub_vv; break;
+								case 11: if (rvv && rv64) op = rv_op_vfnmsub_vv; break;
+								case 12: if (rvv && rv64) op = rv_op_vfmacc_vv; break;
+								case 13: if (rvv && rv64) op = rv_op_vfnmacc_vv; break;
+								case 14: if (rvv && rv64) op = rv_op_vfmsac_vv; break;
+								case 15: if (rvv && rv64) op = rv_op_vfnmsac_vv; break;
+								case 16: if (rvv && rv64) op = rv_op_vfwadd_vv; break;
+								case 17: if (rvv && rv64) op = rv_op_vfwredsum_vv; break;
+								case 18: if (rvv && rv64) op = rv_op_vfwsub_vv; break;
+								case 19: if (rvv && rv64) op = rv_op_vfwredosum_vv; break;
 								case 20: if (rvv && rv64) op = rv_op_vfwadd_wv; break;
 								case 22: if (rvv && rv64) op = rv_op_vfwsub_wv; break;
-								case 24: if (rvv && rv64) op = rv_op_vfwmul_vx; break;
-								case 25: if (rvv && rv64) op = rv_op_vfdot_vx; break;
-								case 28: if (rvv && rv64) op = rv_op_vfwmacc_vx; break;
-								case 29: if (rvv && rv64) op = rv_op_vfwnmacc_vx; break;
-								case 30: if (rvv && rv64) op = rv_op_vfwmsac_vx; break;
-								case 31: if (rvv && rv64) op = rv_op_vfwnmsac_vx; break;
+								case 24: if (rvv && rv64) op = rv_op_vfwmul_vv; break;
+								case 25: if (rvv && rv64) op = rv_op_vfdot_vv; break;
+								case 28: if (rvv && rv64) op = rv_op_vfwmacc_vv; break;
+								case 29: if (rvv && rv64) op = rv_op_vfwnmacc_vv; break;
+								case 30: if (rvv && rv64) op = rv_op_vfwmsac_vv; break;
+								case 31: if (rvv && rv64) op = rv_op_vfwnmsac_vv; break;
 							}
 							break;
 						case 10:
@@ -1694,7 +1694,7 @@ inline void decode_inst_type(T &dec, riscv::inst_t inst)
 		case rv_codec_i_vv:             riscv::decode_i_vv(dec, inst);                     break;
 		case rv_codec_i_vr:             riscv::decode_i_vr(dec, inst);                     break;
 		case rv_codec_i_vf:             riscv::decode_i_vf(dec, inst);                     break;
-		case rv_codec_i_vff:            riscv::decode_i_vff(dec, inst);                    break;
+		case rv_codec_i_vvf:            riscv::decode_i_vvf(dec, inst);                    break;
 		case rv_codec_i_vi:             riscv::decode_i_vi(dec, inst);                     break;
 		case rv_codec_i_v:              riscv::decode_i_v(dec, inst);                      break;
 	};
@@ -1764,7 +1764,7 @@ inline riscv::inst_t encode_inst(T &dec)
 		case rv_codec_i_vv:             return inst |= riscv::encode_i_vv(dec);            break;
 		case rv_codec_i_vr:             return inst |= riscv::encode_i_vr(dec);            break;
 		case rv_codec_i_vf:             return inst |= riscv::encode_i_vf(dec);            break;
-		case rv_codec_i_vff:            return inst |= riscv::encode_i_vff(dec);           break;
+		case rv_codec_i_vvf:            return inst |= riscv::encode_i_vvf(dec);           break;
 		case rv_codec_i_vi:             return inst |= riscv::encode_i_vi(dec);            break;
 		case rv_codec_i_v:              return inst |= riscv::encode_i_v(dec);             break;
 	};

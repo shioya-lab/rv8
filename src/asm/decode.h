@@ -508,7 +508,7 @@ template <typename T> inline void decode_i_vf(T &dec, inst_t inst)
 }
 
 
-template <typename T> inline void decode_i_vff(T &dec, inst_t inst)
+template <typename T> inline void decode_i_vvf(T &dec, inst_t inst)
 {
 	dec.rd = operand_rd::decode(inst);
 	dec.rs1 = operand_rs1::decode(inst);

@@ -2868,162 +2868,162 @@ inst_t riscv::emit_vl8re64_v(vreg5 vd, ireg5 rs1)
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs1re8_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs1re8_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs1re8_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs1re16_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs1re16_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs1re16_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs1re32_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs1re32_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs1re32_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs1re64_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs1re64_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs1re64_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs2re8_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs2re8_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs2re8_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs2re16_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs2re16_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs2re16_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs2re32_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs2re32_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs2re32_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs2re64_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs2re64_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs2re64_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs4re8_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs4re8_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs4re8_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs4re16_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs4re16_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs4re16_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs4re32_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs4re32_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs4re32_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs4re64_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs4re64_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs4re64_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs8re8_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs8re8_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs8re8_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs8re16_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs8re16_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs8re16_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs8re32_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs8re32_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs8re32_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vs8re64_v(vreg5 vs3, ireg5 rs1)
+inst_t riscv::emit_vs8re64_v(vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vs8re64_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	return encode_inst(dec);
 }
@@ -8476,245 +8476,245 @@ inst_t riscv::emit_vfncvt_rtz_x_f_w(vreg5 vd, vreg5 vs2)
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfmul_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfmul_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfmul_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfmul_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfrsub_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfrsub_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfrsub_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfrsub_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfmadd_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfmadd_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfmadd_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfmadd_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfnmadd_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfnmadd_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfnmadd_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfnmadd_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfmsub_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfmsub_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfmsub_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfmsub_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfnmsub_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfnmsub_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfnmsub_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfnmsub_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfmacc_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfmacc_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfmacc_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfmacc_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfnmacc_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfnmacc_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfnmacc_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfnmacc_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfmsac_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfmsac_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfmsac_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfmsac_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfnmsac_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfnmsac_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfnmsac_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfnmsac_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfwadd_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfwadd_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfwadd_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfwadd_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfwredsum_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfwredsum_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfwredsum_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfwredsum_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfwsub_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfwsub_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfwsub_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfwsub_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfwredosum_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfwredosum_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfwredosum_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfwredosum_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfwadd_wv(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfwadd_wv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vfwadd_wv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfwsub_wv(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfwsub_wv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vfwsub_wv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfwmul_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfwmul_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfwmul_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfwmul_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfdot_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfdot_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfdot_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfdot_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfwmacc_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfwmacc_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfwmacc_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfwmacc_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfwnmacc_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfwnmacc_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfwnmacc_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfwnmacc_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfwmsac_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfwmsac_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfwmsac_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfwmsac_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfwnmsac_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfwnmsac_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfwnmsac_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfwnmsac_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
@@ -12306,177 +12306,177 @@ bool riscv::asm_vl8re64_v(assembler &as, vreg5 vd, ireg5 rs1)
 	return true;
 }
 
-bool riscv::asm_vs1re8_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs1re8_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs1re8_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs1re16_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs1re16_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs1re16_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs1re32_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs1re32_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs1re32_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs1re64_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs1re64_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs1re64_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs2re8_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs2re8_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs2re8_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs2re16_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs2re16_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs2re16_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs2re32_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs2re32_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs2re32_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs2re64_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs2re64_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs2re64_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs4re8_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs4re8_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs4re8_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs4re16_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs4re16_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs4re16_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs4re32_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs4re32_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs4re32_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs4re64_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs4re64_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs4re64_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs8re8_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs8re8_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs8re8_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs8re16_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs8re16_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs8re16_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs8re32_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs8re32_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs8re32_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vs8re64_v(assembler &as, vreg5 vs3, ireg5 rs1)
+bool riscv::asm_vs8re64_v(assembler &as, vreg5 vd, ireg5 rs1)
 {
 	decode dec;
-	if (!(vs3.valid() && rs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && rs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vs8re64_v;
-/* dec.? = vs3 unhandled */
+/* dec.? = vd unhandled */
 	dec.rs1 = rs1;
 	as.add_inst(encode_inst(dec));
 	return true;
@@ -18434,266 +18434,266 @@ bool riscv::asm_vfncvt_rtz_x_f_w(assembler &as, vreg5 vd, vreg5 vs2)
 	return true;
 }
 
-bool riscv::asm_vfmul_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfmul_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfmul_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfmul_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfrsub_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfrsub_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfrsub_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfrsub_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfmadd_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfmadd_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfmadd_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfmadd_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfnmadd_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfnmadd_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfnmadd_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfnmadd_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfmsub_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfmsub_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfmsub_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfmsub_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfnmsub_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfnmsub_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfnmsub_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfnmsub_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfmacc_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfmacc_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfmacc_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfmacc_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfnmacc_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfnmacc_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfnmacc_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfnmacc_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfmsac_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfmsac_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfmsac_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfmsac_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfnmsac_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfnmsac_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfnmsac_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfnmsac_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfwadd_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfwadd_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfwadd_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfwadd_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfwredsum_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfwredsum_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfwredsum_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfwredsum_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfwsub_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfwsub_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfwsub_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfwsub_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfwredosum_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfwredosum_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfwredosum_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfwredosum_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfwadd_wv(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfwadd_wv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vfwadd_wv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfwsub_wv(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfwsub_wv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vfwsub_wv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfwmul_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfwmul_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfwmul_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfwmul_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfdot_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfdot_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfdot_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfdot_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfwmacc_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfwmacc_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfwmacc_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfwmacc_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfwnmacc_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfwnmacc_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfwnmacc_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfwnmacc_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfwmsac_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfwmsac_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfwmsac_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfwmsac_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
 
-bool riscv::asm_vfwnmsac_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfwnmsac_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfwnmsac_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfwnmsac_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
