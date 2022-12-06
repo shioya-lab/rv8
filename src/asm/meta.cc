@@ -1274,6 +1274,12 @@ const rv_operand_data rv_operands_sx_crs2_T_cimmswsp[] = {
 	{ rv_operand_name_none, rv_operand_type_none, rv_primitive_none, rv_type_none, 0 }
 };
 
+const rv_operand_data rv_operands_sx_frd_T_vs2[] = {
+	{ rv_operand_name_frd, rv_operand_type_freg5, rv_primitive_sx, rv_type_freg, 5 },
+	{ rv_operand_name_vs2, rv_operand_type_vreg5, rv_primitive_none, rv_type_vreg, 5 },
+	{ rv_operand_name_none, rv_operand_type_none, rv_primitive_none, rv_type_none, 0 }
+};
+
 const rv_operand_data rv_operands_sx_rd[] = {
 	{ rv_operand_name_rd, rv_operand_type_ireg5, rv_primitive_sx, rv_type_ireg, 5 },
 	{ rv_operand_name_none, rv_operand_type_none, rv_primitive_none, rv_type_none, 0 }
@@ -1892,22 +1898,22 @@ const rv_codec rv_inst_codec[] = {
 	/*            vl8re16.v */ rv_codec_i_lv,
 	/*            vl8re32.v */ rv_codec_i_lv,
 	/*            vl8re64.v */ rv_codec_i_lv,
-	/*             vs1re8.v */ rv_codec_i_lv,
-	/*            vs1re16.v */ rv_codec_i_lv,
-	/*            vs1re32.v */ rv_codec_i_lv,
-	/*            vs1re64.v */ rv_codec_i_lv,
-	/*             vs2re8.v */ rv_codec_i_lv,
-	/*            vs2re16.v */ rv_codec_i_lv,
-	/*            vs2re32.v */ rv_codec_i_lv,
-	/*            vs2re64.v */ rv_codec_i_lv,
-	/*             vs4re8.v */ rv_codec_i_lv,
-	/*            vs4re16.v */ rv_codec_i_lv,
-	/*            vs4re32.v */ rv_codec_i_lv,
-	/*            vs4re64.v */ rv_codec_i_lv,
-	/*             vs8re8.v */ rv_codec_i_lv,
-	/*            vs8re16.v */ rv_codec_i_lv,
-	/*            vs8re32.v */ rv_codec_i_lv,
-	/*            vs8re64.v */ rv_codec_i_lv,
+	/*             vs1re8.v */ rv_codec_s_v,
+	/*            vs1re16.v */ rv_codec_s_v,
+	/*            vs1re32.v */ rv_codec_s_v,
+	/*            vs1re64.v */ rv_codec_s_v,
+	/*             vs2re8.v */ rv_codec_s_v,
+	/*            vs2re16.v */ rv_codec_s_v,
+	/*            vs2re32.v */ rv_codec_s_v,
+	/*            vs2re64.v */ rv_codec_s_v,
+	/*             vs4re8.v */ rv_codec_s_v,
+	/*            vs4re16.v */ rv_codec_s_v,
+	/*            vs4re32.v */ rv_codec_s_v,
+	/*            vs4re64.v */ rv_codec_s_v,
+	/*             vs8re8.v */ rv_codec_s_v,
+	/*            vs8re16.v */ rv_codec_s_v,
+	/*            vs8re32.v */ rv_codec_s_v,
+	/*            vs8re64.v */ rv_codec_s_v,
 	/*              vlse8.v */ rv_codec_i_vs,
 	/*              vsse8.v */ rv_codec_s_vs,
 	/*             vlse16.v */ rv_codec_i_vs,
@@ -2445,9 +2451,9 @@ const rv_codec rv_inst_codec[] = {
 	/*            vfsgnj.vf */ rv_codec_i_vf,
 	/*           vfsgnjn.vf */ rv_codec_i_vf,
 	/*           vfsgnjx.vf */ rv_codec_i_vf,
-	/*             vfmv.s.f */ rv_codec_i_vf,
-	/*             vfmv.f.s */ rv_codec_i_vf,
-	/*              vfmv.vf */ rv_codec_i_vf,
+	/*             vfmv.s.f */ rv_codec_i_vr1,
+	/*             vfmv.f.s */ rv_codec_i_frv,
+	/*             vfmv.v.f */ rv_codec_i_vf,
 	/*             vmfeq.vf */ rv_codec_i_vf,
 	/*             vmfle.vf */ rv_codec_i_vf,
 	/*             vmflt.vf */ rv_codec_i_vf,
@@ -2478,6 +2484,7 @@ const rv_codec rv_inst_codec[] = {
 	/*          vfwnmacc.vf */ rv_codec_i_vf,
 	/*           vfwmsac.vf */ rv_codec_i_vf,
 	/*          vfwnmsac.vf */ rv_codec_i_vf,
+	/*             vfsqrt.v */ rv_codec_i_vf,
 };
 
 const char* rv_inst_format[] = {
@@ -2831,22 +2838,22 @@ const char* rv_inst_format[] = {
 	/*            vl8re16.v */ rv_fmt_vd_rs1,
 	/*            vl8re32.v */ rv_fmt_vd_rs1,
 	/*            vl8re64.v */ rv_fmt_vd_rs1,
-	/*             vs1re8.v */ rv_fmt_vd_rs1,
-	/*            vs1re16.v */ rv_fmt_vd_rs1,
-	/*            vs1re32.v */ rv_fmt_vd_rs1,
-	/*            vs1re64.v */ rv_fmt_vd_rs1,
-	/*             vs2re8.v */ rv_fmt_vd_rs1,
-	/*            vs2re16.v */ rv_fmt_vd_rs1,
-	/*            vs2re32.v */ rv_fmt_vd_rs1,
-	/*            vs2re64.v */ rv_fmt_vd_rs1,
-	/*             vs4re8.v */ rv_fmt_vd_rs1,
-	/*            vs4re16.v */ rv_fmt_vd_rs1,
-	/*            vs4re32.v */ rv_fmt_vd_rs1,
-	/*            vs4re64.v */ rv_fmt_vd_rs1,
-	/*             vs8re8.v */ rv_fmt_vd_rs1,
-	/*            vs8re16.v */ rv_fmt_vd_rs1,
-	/*            vs8re32.v */ rv_fmt_vd_rs1,
-	/*            vs8re64.v */ rv_fmt_vd_rs1,
+	/*             vs1re8.v */ rv_fmt_vs3_rs1,
+	/*            vs1re16.v */ rv_fmt_vs3_rs1,
+	/*            vs1re32.v */ rv_fmt_vs3_rs1,
+	/*            vs1re64.v */ rv_fmt_vs3_rs1,
+	/*             vs2re8.v */ rv_fmt_vs3_rs1,
+	/*            vs2re16.v */ rv_fmt_vs3_rs1,
+	/*            vs2re32.v */ rv_fmt_vs3_rs1,
+	/*            vs2re64.v */ rv_fmt_vs3_rs1,
+	/*             vs4re8.v */ rv_fmt_vs3_rs1,
+	/*            vs4re16.v */ rv_fmt_vs3_rs1,
+	/*            vs4re32.v */ rv_fmt_vs3_rs1,
+	/*            vs4re64.v */ rv_fmt_vs3_rs1,
+	/*             vs8re8.v */ rv_fmt_vs3_rs1,
+	/*            vs8re16.v */ rv_fmt_vs3_rs1,
+	/*            vs8re32.v */ rv_fmt_vs3_rs1,
+	/*            vs8re64.v */ rv_fmt_vs3_rs1,
 	/*              vlse8.v */ rv_fmt_vd_rs1_rs2,
 	/*              vsse8.v */ rv_fmt_vs3_rs1_rs2,
 	/*             vlse16.v */ rv_fmt_vd_rs1_rs2,
@@ -3384,9 +3391,9 @@ const char* rv_inst_format[] = {
 	/*            vfsgnj.vf */ rv_fmt_vd_vs2_frs1,
 	/*           vfsgnjn.vf */ rv_fmt_vd_vs2_frs1,
 	/*           vfsgnjx.vf */ rv_fmt_vd_vs2_frs1,
-	/*             vfmv.s.f */ rv_fmt_vd_vs2_frs1,
-	/*             vfmv.f.s */ rv_fmt_vd_vs2_frs1,
-	/*              vfmv.vf */ rv_fmt_vd_vs2_frs1,
+	/*             vfmv.s.f */ rv_fmt_vd_rs1,
+	/*             vfmv.f.s */ rv_fmt_frd_vs2,
+	/*             vfmv.v.f */ rv_fmt_vd_vs2_frs1,
 	/*             vmfeq.vf */ rv_fmt_vd_vs2_frs1,
 	/*             vmfle.vf */ rv_fmt_vd_vs2_frs1,
 	/*             vmflt.vf */ rv_fmt_vd_vs2_frs1,
@@ -3417,6 +3424,7 @@ const char* rv_inst_format[] = {
 	/*          vfwnmacc.vf */ rv_fmt_vd_vs2_frs1,
 	/*           vfwmsac.vf */ rv_fmt_vd_vs2_frs1,
 	/*          vfwnmsac.vf */ rv_fmt_vd_vs2_frs1,
+	/*             vfsqrt.v */ rv_fmt_vd_vs2_frs1,
 };
 
 const rv_operand_data* rv_inst_operand_data[] = {
@@ -3770,22 +3778,22 @@ const rv_operand_data* rv_inst_operand_data[] = {
 	/*            vl8re16.v */ rv_operands_T_vd_sx_rs1,
 	/*            vl8re32.v */ rv_operands_T_vd_sx_rs1,
 	/*            vl8re64.v */ rv_operands_T_vd_sx_rs1,
-	/*             vs1re8.v */ rv_operands_T_vd_sx_rs1,
-	/*            vs1re16.v */ rv_operands_T_vd_sx_rs1,
-	/*            vs1re32.v */ rv_operands_T_vd_sx_rs1,
-	/*            vs1re64.v */ rv_operands_T_vd_sx_rs1,
-	/*             vs2re8.v */ rv_operands_T_vd_sx_rs1,
-	/*            vs2re16.v */ rv_operands_T_vd_sx_rs1,
-	/*            vs2re32.v */ rv_operands_T_vd_sx_rs1,
-	/*            vs2re64.v */ rv_operands_T_vd_sx_rs1,
-	/*             vs4re8.v */ rv_operands_T_vd_sx_rs1,
-	/*            vs4re16.v */ rv_operands_T_vd_sx_rs1,
-	/*            vs4re32.v */ rv_operands_T_vd_sx_rs1,
-	/*            vs4re64.v */ rv_operands_T_vd_sx_rs1,
-	/*             vs8re8.v */ rv_operands_T_vd_sx_rs1,
-	/*            vs8re16.v */ rv_operands_T_vd_sx_rs1,
-	/*            vs8re32.v */ rv_operands_T_vd_sx_rs1,
-	/*            vs8re64.v */ rv_operands_T_vd_sx_rs1,
+	/*             vs1re8.v */ rv_operands_T_vs3_sx_rs1,
+	/*            vs1re16.v */ rv_operands_T_vs3_sx_rs1,
+	/*            vs1re32.v */ rv_operands_T_vs3_sx_rs1,
+	/*            vs1re64.v */ rv_operands_T_vs3_sx_rs1,
+	/*             vs2re8.v */ rv_operands_T_vs3_sx_rs1,
+	/*            vs2re16.v */ rv_operands_T_vs3_sx_rs1,
+	/*            vs2re32.v */ rv_operands_T_vs3_sx_rs1,
+	/*            vs2re64.v */ rv_operands_T_vs3_sx_rs1,
+	/*             vs4re8.v */ rv_operands_T_vs3_sx_rs1,
+	/*            vs4re16.v */ rv_operands_T_vs3_sx_rs1,
+	/*            vs4re32.v */ rv_operands_T_vs3_sx_rs1,
+	/*            vs4re64.v */ rv_operands_T_vs3_sx_rs1,
+	/*             vs8re8.v */ rv_operands_T_vs3_sx_rs1,
+	/*            vs8re16.v */ rv_operands_T_vs3_sx_rs1,
+	/*            vs8re32.v */ rv_operands_T_vs3_sx_rs1,
+	/*            vs8re64.v */ rv_operands_T_vs3_sx_rs1,
 	/*              vlse8.v */ rv_operands_T_vd_sx_rs1_T_vs2,
 	/*              vsse8.v */ rv_operands_T_vs3_sx_rs1_T_vs2,
 	/*             vlse16.v */ rv_operands_T_vd_sx_rs1_T_vs2,
@@ -4323,9 +4331,9 @@ const rv_operand_data* rv_inst_operand_data[] = {
 	/*            vfsgnj.vf */ rv_operands_T_vd_T_vs2_sx_frs1,
 	/*           vfsgnjn.vf */ rv_operands_T_vd_T_vs2_sx_frs1,
 	/*           vfsgnjx.vf */ rv_operands_T_vd_T_vs2_sx_frs1,
-	/*             vfmv.s.f */ rv_operands_T_vd_T_vs2_f32_frs1,
-	/*             vfmv.f.s */ rv_operands_T_vd_T_vs2_f32_frs1,
-	/*              vfmv.vf */ rv_operands_T_vd_T_vs2_sx_frs1,
+	/*             vfmv.s.f */ rv_operands_T_vd_sx_rs1,
+	/*             vfmv.f.s */ rv_operands_sx_frd_T_vs2,
+	/*             vfmv.v.f */ rv_operands_T_vd_T_vs2_f32_frs1,
 	/*             vmfeq.vf */ rv_operands_T_vd_T_vs2_sx_frs1,
 	/*             vmfle.vf */ rv_operands_T_vd_T_vs2_sx_frs1,
 	/*             vmflt.vf */ rv_operands_T_vd_T_vs2_sx_frs1,
@@ -4356,6 +4364,7 @@ const rv_operand_data* rv_inst_operand_data[] = {
 	/*          vfwnmacc.vf */ rv_operands_T_vd_T_vs2_sx_frs1,
 	/*           vfwmsac.vf */ rv_operands_T_vd_T_vs2_sx_frs1,
 	/*          vfwnmsac.vf */ rv_operands_T_vd_T_vs2_sx_frs1,
+	/*             vfsqrt.v */ rv_operands_T_vd_T_vs2,
 };
 
 const riscv::inst_t rv_inst_match[] = {
@@ -5264,7 +5273,7 @@ const riscv::inst_t rv_inst_match[] = {
 	/*           vfsgnjx.vf */ 0x0000000028005057,
 	/*             vfmv.s.f */ 0x0000000040005057,
 	/*             vfmv.f.s */ 0x0000000040001057,
-	/*              vfmv.vf */ 0x000000005c005057,
+	/*             vfmv.v.f */ 0x000000005c005057,
 	/*             vmfeq.vf */ 0x0000000060005057,
 	/*             vmfle.vf */ 0x0000000064005057,
 	/*             vmflt.vf */ 0x000000006c005057,
@@ -5295,6 +5304,7 @@ const riscv::inst_t rv_inst_match[] = {
 	/*          vfwnmacc.vf */ 0x00000000f4005057,
 	/*           vfwmsac.vf */ 0x00000000f8005057,
 	/*          vfwnmsac.vf */ 0x00000000fc005057,
+	/*             vfsqrt.v */ 0x000000004c001057,
 };
 
 const riscv::inst_t rv_inst_mask[] = {
@@ -6203,7 +6213,7 @@ const riscv::inst_t rv_inst_mask[] = {
 	/*           vfsgnjx.vf */ 0x00000000fc00707f,
 	/*             vfmv.s.f */ 0x00000000fdf0707f,
 	/*             vfmv.f.s */ 0x00000000fc0ff07f,
-	/*              vfmv.vf */ 0x00000000fc00707f,
+	/*             vfmv.v.f */ 0x00000000fc00707f,
 	/*             vmfeq.vf */ 0x00000000fc00707f,
 	/*             vmfle.vf */ 0x00000000fc00707f,
 	/*             vmflt.vf */ 0x00000000fc00707f,
@@ -6234,6 +6244,7 @@ const riscv::inst_t rv_inst_mask[] = {
 	/*          vfwnmacc.vf */ 0x00000000fc00707f,
 	/*           vfwmsac.vf */ 0x00000000fc00707f,
 	/*          vfwnmsac.vf */ 0x00000000fc00707f,
+	/*             vfsqrt.v */ 0x00000000fc0ff07f,
 };
 
 const rvc_constraint rvcc_jal[] = {
@@ -7554,7 +7565,7 @@ const rv_comp_data* rv_inst_pseudo[] = {
 	/*           vfsgnjx.vf */ nullptr,
 	/*             vfmv.s.f */ nullptr,
 	/*             vfmv.f.s */ nullptr,
-	/*              vfmv.vf */ nullptr,
+	/*             vfmv.v.f */ nullptr,
 	/*             vmfeq.vf */ nullptr,
 	/*             vmfle.vf */ nullptr,
 	/*             vmflt.vf */ nullptr,
@@ -7585,6 +7596,7 @@ const rv_comp_data* rv_inst_pseudo[] = {
 	/*          vfwnmacc.vf */ nullptr,
 	/*           vfwmsac.vf */ nullptr,
 	/*          vfwnmsac.vf */ nullptr,
+	/*             vfsqrt.v */ nullptr,
 };
 
 const rv_comp_data rv_inst_depseudo[] = {
@@ -8493,7 +8505,7 @@ const rv_comp_data rv_inst_depseudo[] = {
 	/*           vfsgnjx.vf */ { rv_op_illegal, nullptr },
 	/*             vfmv.s.f */ { rv_op_illegal, nullptr },
 	/*             vfmv.f.s */ { rv_op_illegal, nullptr },
-	/*              vfmv.vf */ { rv_op_illegal, nullptr },
+	/*             vfmv.v.f */ { rv_op_illegal, nullptr },
 	/*             vmfeq.vf */ { rv_op_illegal, nullptr },
 	/*             vmfle.vf */ { rv_op_illegal, nullptr },
 	/*             vmflt.vf */ { rv_op_illegal, nullptr },
@@ -8524,6 +8536,7 @@ const rv_comp_data rv_inst_depseudo[] = {
 	/*          vfwnmacc.vf */ { rv_op_illegal, nullptr },
 	/*           vfwmsac.vf */ { rv_op_illegal, nullptr },
 	/*          vfwnmsac.vf */ { rv_op_illegal, nullptr },
+	/*             vfsqrt.v */ { rv_op_illegal, nullptr },
 };
 
 const rv_comp_data* rv_inst_comp_rv32[] = {
@@ -9432,7 +9445,7 @@ const rv_comp_data* rv_inst_comp_rv32[] = {
 	/*           vfsgnjx.vf */ nullptr,
 	/*             vfmv.s.f */ nullptr,
 	/*             vfmv.f.s */ nullptr,
-	/*              vfmv.vf */ nullptr,
+	/*             vfmv.v.f */ nullptr,
 	/*             vmfeq.vf */ nullptr,
 	/*             vmfle.vf */ nullptr,
 	/*             vmflt.vf */ nullptr,
@@ -9463,6 +9476,7 @@ const rv_comp_data* rv_inst_comp_rv32[] = {
 	/*          vfwnmacc.vf */ nullptr,
 	/*           vfwmsac.vf */ nullptr,
 	/*          vfwnmsac.vf */ nullptr,
+	/*             vfsqrt.v */ nullptr,
 };
 
 const rv_comp_data* rv_inst_comp_rv64[] = {
@@ -10371,7 +10385,7 @@ const rv_comp_data* rv_inst_comp_rv64[] = {
 	/*           vfsgnjx.vf */ nullptr,
 	/*             vfmv.s.f */ nullptr,
 	/*             vfmv.f.s */ nullptr,
-	/*              vfmv.vf */ nullptr,
+	/*             vfmv.v.f */ nullptr,
 	/*             vmfeq.vf */ nullptr,
 	/*             vmfle.vf */ nullptr,
 	/*             vmflt.vf */ nullptr,
@@ -10402,6 +10416,7 @@ const rv_comp_data* rv_inst_comp_rv64[] = {
 	/*          vfwnmacc.vf */ nullptr,
 	/*           vfwmsac.vf */ nullptr,
 	/*          vfwnmsac.vf */ nullptr,
+	/*             vfsqrt.v */ nullptr,
 };
 
 const rv_comp_data* rv_inst_comp_rv128[] = {
@@ -11310,7 +11325,7 @@ const rv_comp_data* rv_inst_comp_rv128[] = {
 	/*           vfsgnjx.vf */ nullptr,
 	/*             vfmv.s.f */ nullptr,
 	/*             vfmv.f.s */ nullptr,
-	/*              vfmv.vf */ nullptr,
+	/*             vfmv.v.f */ nullptr,
 	/*             vmfeq.vf */ nullptr,
 	/*             vmfle.vf */ nullptr,
 	/*             vmflt.vf */ nullptr,
@@ -11341,6 +11356,7 @@ const rv_comp_data* rv_inst_comp_rv128[] = {
 	/*          vfwnmacc.vf */ nullptr,
 	/*           vfwmsac.vf */ nullptr,
 	/*          vfwnmsac.vf */ nullptr,
+	/*             vfsqrt.v */ nullptr,
 };
 
 const int rv_inst_decomp_rv32[] = {
@@ -12249,7 +12265,7 @@ const int rv_inst_decomp_rv32[] = {
 	/*           vfsgnjx.vf */ rv_op_illegal,
 	/*             vfmv.s.f */ rv_op_illegal,
 	/*             vfmv.f.s */ rv_op_illegal,
-	/*              vfmv.vf */ rv_op_illegal,
+	/*             vfmv.v.f */ rv_op_illegal,
 	/*             vmfeq.vf */ rv_op_illegal,
 	/*             vmfle.vf */ rv_op_illegal,
 	/*             vmflt.vf */ rv_op_illegal,
@@ -12280,6 +12296,7 @@ const int rv_inst_decomp_rv32[] = {
 	/*          vfwnmacc.vf */ rv_op_illegal,
 	/*           vfwmsac.vf */ rv_op_illegal,
 	/*          vfwnmsac.vf */ rv_op_illegal,
+	/*             vfsqrt.v */ rv_op_illegal,
 };
 
 const int rv_inst_decomp_rv64[] = {
@@ -13188,7 +13205,7 @@ const int rv_inst_decomp_rv64[] = {
 	/*           vfsgnjx.vf */ rv_op_illegal,
 	/*             vfmv.s.f */ rv_op_illegal,
 	/*             vfmv.f.s */ rv_op_illegal,
-	/*              vfmv.vf */ rv_op_illegal,
+	/*             vfmv.v.f */ rv_op_illegal,
 	/*             vmfeq.vf */ rv_op_illegal,
 	/*             vmfle.vf */ rv_op_illegal,
 	/*             vmflt.vf */ rv_op_illegal,
@@ -13219,6 +13236,7 @@ const int rv_inst_decomp_rv64[] = {
 	/*          vfwnmacc.vf */ rv_op_illegal,
 	/*           vfwmsac.vf */ rv_op_illegal,
 	/*          vfwnmsac.vf */ rv_op_illegal,
+	/*             vfsqrt.v */ rv_op_illegal,
 };
 
 const int rv_inst_decomp_rv128[] = {
@@ -14127,7 +14145,7 @@ const int rv_inst_decomp_rv128[] = {
 	/*           vfsgnjx.vf */ rv_op_illegal,
 	/*             vfmv.s.f */ rv_op_illegal,
 	/*             vfmv.f.s */ rv_op_illegal,
-	/*              vfmv.vf */ rv_op_illegal,
+	/*             vfmv.v.f */ rv_op_illegal,
 	/*             vmfeq.vf */ rv_op_illegal,
 	/*             vmfle.vf */ rv_op_illegal,
 	/*             vmflt.vf */ rv_op_illegal,
@@ -14158,5 +14176,6 @@ const int rv_inst_decomp_rv128[] = {
 	/*          vfwnmacc.vf */ rv_op_illegal,
 	/*           vfwmsac.vf */ rv_op_illegal,
 	/*          vfwnmsac.vf */ rv_op_illegal,
+	/*             vfsqrt.v */ rv_op_illegal,
 };
 

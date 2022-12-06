@@ -1137,6 +1137,12 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 										case 23: if (rvv && rv64) op = rv_op_vfncvt_rtz_x_f_w; break;
 									}
 									break;
+								case 19:
+									// vfsqrt.v
+									switch (((inst >> 15) & 0b11111) /* inst[19:15] */) {
+										case 0: if (rvv && rv64) op = rv_op_vfsqrt_v; break;
+									}
+									break;
 								case 24: if (rvv && rv64) op = rv_op_vmfeq_vx; break;
 								case 25: if (rvv && rv64) op = rv_op_vmfle_vx; break;
 								case 27: if (rvv && rv64) op = rv_op_vmflt_vx; break;
@@ -1271,7 +1277,7 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 										case 0: if (rvv && rv64) op = rv_op_vfmv_s_f; break;
 									}
 									break;
-								case 23: if (rvv && rv64) op = rv_op_vfmv_vf; break;
+								case 23: if (rvv && rv64) op = rv_op_vfmv_v_f; break;
 								case 24: if (rvv && rv64) op = rv_op_vmfeq_vf; break;
 								case 25: if (rvv && rv64) op = rv_op_vmfle_vf; break;
 								case 27: if (rvv && rv64) op = rv_op_vmflt_vf; break;
@@ -1697,6 +1703,8 @@ inline void decode_inst_type(T &dec, riscv::inst_t inst)
 		case rv_codec_i_vvf:            riscv::decode_i_vvf(dec, inst);                    break;
 		case rv_codec_i_vi:             riscv::decode_i_vi(dec, inst);                     break;
 		case rv_codec_i_v:              riscv::decode_i_v(dec, inst);                      break;
+		case rv_codec_i_vr1:            riscv::decode_i_vr1(dec, inst);                    break;
+		case rv_codec_i_frv:            riscv::decode_i_frv(dec, inst);                    break;
 	};
 }
 
@@ -1767,6 +1775,8 @@ inline riscv::inst_t encode_inst(T &dec)
 		case rv_codec_i_vvf:            return inst |= riscv::encode_i_vvf(dec);           break;
 		case rv_codec_i_vi:             return inst |= riscv::encode_i_vi(dec);            break;
 		case rv_codec_i_v:              return inst |= riscv::encode_i_v(dec);             break;
+		case rv_codec_i_vr1:            return inst |= riscv::encode_i_vr1(dec);           break;
+		case rv_codec_i_frv:            return inst |= riscv::encode_i_frv(dec);           break;
 	};
 	return inst;
 }

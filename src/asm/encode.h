@@ -355,6 +355,8 @@ template <typename T> inline inst_t encode_i_vf(T &dec) { return 0; }
 template <typename T> inline inst_t encode_i_vvf(T &dec) { return 0; }
 template <typename T> inline inst_t encode_i_vi(T &dec) { return 0; }
 template <typename T> inline inst_t encode_i_v(T &dec) { return 0; }
+template <typename T> inline inst_t encode_i_vr1(T &dec) { return 0; }
+template <typename T> inline inst_t encode_i_frv(T &dec) { return 0; }
 
 
 #endif

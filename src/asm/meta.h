@@ -650,6 +650,8 @@ enum rv_codec
 	rv_codec_i_vvf,
 	rv_codec_i_vi,
 	rv_codec_i_v,
+	rv_codec_i_vr1,
+	rv_codec_i_frv,
 };
 
 enum rv_operand_name
@@ -1656,7 +1658,7 @@ enum rv_op
 	rv_op_vfsgnjx_vf = 902,            
 	rv_op_vfmv_s_f = 903,              
 	rv_op_vfmv_f_s = 904,              
-	rv_op_vfmv_vf = 905,               
+	rv_op_vfmv_v_f = 905,              
 	rv_op_vmfeq_vf = 906,              
 	rv_op_vmfle_vf = 907,              
 	rv_op_vmflt_vf = 908,              
@@ -1687,6 +1689,7 @@ enum rv_op
 	rv_op_vfwnmacc_vf = 933,           
 	rv_op_vfwmsac_vf = 934,            
 	rv_op_vfwnmsac_vf = 935,           
+	rv_op_vfsqrt_v = 936,              
 };
 
 /* Primitive data structure */
