@@ -1258,7 +1258,7 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 							}
 							break;
 						case 5:
-							// vfadd.vf vfredsum.vf vfsub.vf vfredosum.vf vfmin.vf vfredmin.vf vfmax.vf vfredmax.vf vfsgnj.vf vfsgnjn.vf vfsgnjx.vf vfmv.s.f ...
+							// vfslide1up.vf vfslide1down.vf vfadd.vf vfredsum.vf vfsub.vf vfredosum.vf vfmin.vf vfredmin.vf vfmax.vf vfredmax.vf vfsgnj.vf vfsgnjn.vf ...
 							switch (((inst >> 26) & 0b11111) /* inst[30:26] */) {
 								case 0: if (rvv && rv64) op = rv_op_vfadd_vf; break;
 								case 1: if (rvv && rv64) op = rv_op_vfredsum_vf; break;
@@ -1271,6 +1271,8 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 								case 8: if (rvv && rv64) op = rv_op_vfsgnj_vf; break;
 								case 9: if (rvv && rv64) op = rv_op_vfsgnjn_vf; break;
 								case 10: if (rvv && rv64) op = rv_op_vfsgnjx_vf; break;
+								case 14: if (rvv && rv64) op = rv_op_vfslide1up_vf; break;
+								case 15: if (rvv && rv64) op = rv_op_vfslide1down_vf; break;
 								case 16:
 									// vfmv.s.f
 									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {

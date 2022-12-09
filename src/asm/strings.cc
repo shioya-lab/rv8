@@ -959,6 +959,8 @@ const char* rv_inst_name_sym[] = {
 	"vfsgnj.vv",
 	"vfsgnjn.vv",
 	"vfsgnjx.vv",
+	"vfslide1up.vf",
+	"vfslide1down.vf",
 	"vmfeq.vx",
 	"vmfle.vx",
 	"vmflt.vx",
