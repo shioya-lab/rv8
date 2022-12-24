@@ -959,6 +959,8 @@ const char* rv_inst_name_sym[] = {
 	"vfsgnj.vv",
 	"vfsgnjn.vv",
 	"vfsgnjx.vv",
+	"vfslide1up.vf",
+	"vfslide1down.vf",
 	"vmfeq.vx",
 	"vmfle.vx",
 	"vmflt.vx",
@@ -1020,7 +1022,7 @@ const char* rv_inst_name_sym[] = {
 	"vfsgnjx.vf",
 	"vfmv.s.f",
 	"vfmv.f.s",
-	"vfmv.vf",
+	"vfmv.v.f",
 	"vmfeq.vf",
 	"vmfle.vf",
 	"vmflt.vf",
@@ -1051,6 +1053,7 @@ const char* rv_inst_name_sym[] = {
 	"vfwnmacc.vf",
 	"vfwmsac.vf",
 	"vfwnmsac.vf",
+	"vfsqrt.v",
 	nullptr
 };
 
