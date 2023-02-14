@@ -521,10 +521,10 @@ template <typename T> inline void decode_i_vvf(T &dec, inst_t inst)
 template <typename T> inline void decode_i_vi(T &dec, inst_t inst)
 {
 	dec.rd = operand_rd::decode(inst);
-	dec.rs1 = operand_rs1::decode(inst);
-	dec.rs2 = rv_ireg_zero;
+	dec.rs1 = rv_ireg_zero;
+	dec.rs2 = operand_rs2::decode(inst);
 	dec.rs3 = rv_ireg_zero;
-	dec.imm = 0;
+	dec.imm = operand_simm5::decode(inst);
 }
 
 template <typename T> inline void decode_i_v(T &dec, inst_t inst)
