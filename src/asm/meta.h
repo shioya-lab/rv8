@@ -645,6 +645,7 @@ enum rv_codec
 	rv_codec_i_vsv,
 	rv_codec_s_vsv,
 	rv_codec_i_vv,
+	rv_codec_i_vvv,
 	rv_codec_i_vr,
 	rv_codec_i_vf,
 	rv_codec_i_vvf,
@@ -652,6 +653,8 @@ enum rv_codec
 	rv_codec_i_v,
 	rv_codec_i_vr1,
 	rv_codec_i_frv,
+	rv_codec_i_vv0,
+	rv_codec_i_vr0,
 };
 
 enum rv_operand_name
@@ -1381,7 +1384,7 @@ enum rv_op
 	rv_op_vmadc_vv = 625,              
 	rv_op_vsbc_vv = 626,               
 	rv_op_vmsbc_vv = 627,              
-	rv_op_vmerge_vv = 628,             
+	rv_op_vmerge_vvm = 628,            
 	rv_op_vmseq_vv = 629,              
 	rv_op_vmsne_vv = 630,              
 	rv_op_vmsltu_vv = 631,             
@@ -1427,7 +1430,7 @@ enum rv_op
 	rv_op_vmadc_vx = 671,              
 	rv_op_vsbc_vx = 672,               
 	rv_op_vmsbc_vx = 673,              
-	rv_op_vmerge_vx = 674,             
+	rv_op_vmerge_vxm = 674,            
 	rv_op_vmseq_vx = 675,              
 	rv_op_vmsne_vx = 676,              
 	rv_op_vmsltu_vx = 677,             

@@ -1082,7 +1082,7 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 								case 17: if (rvv && rv64) op = rv_op_vmadc_vv; break;
 								case 18: if (rvv && rv64) op = rv_op_vsbc_vv; break;
 								case 19: if (rvv && rv64) op = rv_op_vmsbc_vv; break;
-								case 23: if (rvv && rv64) op = rv_op_vmerge_vv; break;
+								case 23: if (rvv && rv64) op = rv_op_vmerge_vvm; break;
 								case 24: if (rvv && rv64) op = rv_op_vmseq_vv; break;
 								case 25: if (rvv && rv64) op = rv_op_vmsne_vv; break;
 								case 26: if (rvv && rv64) op = rv_op_vmsltu_vv; break;
@@ -1246,7 +1246,7 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 								case 17: if (rvv && rv64) op = rv_op_vmadc_vx; break;
 								case 18: if (rvv && rv64) op = rv_op_vsbc_vx; break;
 								case 19: if (rvv && rv64) op = rv_op_vmsbc_vx; break;
-								case 23: if (rvv && rv64) op = rv_op_vmerge_vx; break;
+								case 23: if (rvv && rv64) op = rv_op_vmerge_vxm; break;
 								case 24: if (rvv && rv64) op = rv_op_vmseq_vx; break;
 								case 25: if (rvv && rv64) op = rv_op_vmsne_vx; break;
 								case 26: if (rvv && rv64) op = rv_op_vmsltu_vx; break;
@@ -1700,6 +1700,7 @@ inline void decode_inst_type(T &dec, riscv::inst_t inst)
 		case rv_codec_i_vsv:            riscv::decode_i_vsv(dec, inst);                    break;
 		case rv_codec_s_vsv:            riscv::decode_s_vsv(dec, inst);                    break;
 		case rv_codec_i_vv:             riscv::decode_i_vv(dec, inst);                     break;
+		case rv_codec_i_vvv:            riscv::decode_i_vvv(dec, inst);                    break;
 		case rv_codec_i_vr:             riscv::decode_i_vr(dec, inst);                     break;
 		case rv_codec_i_vf:             riscv::decode_i_vf(dec, inst);                     break;
 		case rv_codec_i_vvf:            riscv::decode_i_vvf(dec, inst);                    break;
@@ -1707,6 +1708,8 @@ inline void decode_inst_type(T &dec, riscv::inst_t inst)
 		case rv_codec_i_v:              riscv::decode_i_v(dec, inst);                      break;
 		case rv_codec_i_vr1:            riscv::decode_i_vr1(dec, inst);                    break;
 		case rv_codec_i_frv:            riscv::decode_i_frv(dec, inst);                    break;
+		case rv_codec_i_vv0:            riscv::decode_i_vv0(dec, inst);                    break;
+		case rv_codec_i_vr0:            riscv::decode_i_vr0(dec, inst);                    break;
 	};
 }
 
@@ -1772,6 +1775,7 @@ inline riscv::inst_t encode_inst(T &dec)
 		case rv_codec_i_vsv:            return inst |= riscv::encode_i_vsv(dec);           break;
 		case rv_codec_s_vsv:            return inst |= riscv::encode_s_vsv(dec);           break;
 		case rv_codec_i_vv:             return inst |= riscv::encode_i_vv(dec);            break;
+		case rv_codec_i_vvv:            return inst |= riscv::encode_i_vvv(dec);           break;
 		case rv_codec_i_vr:             return inst |= riscv::encode_i_vr(dec);            break;
 		case rv_codec_i_vf:             return inst |= riscv::encode_i_vf(dec);            break;
 		case rv_codec_i_vvf:            return inst |= riscv::encode_i_vvf(dec);           break;
@@ -1779,6 +1783,8 @@ inline riscv::inst_t encode_inst(T &dec)
 		case rv_codec_i_v:              return inst |= riscv::encode_i_v(dec);             break;
 		case rv_codec_i_vr1:            return inst |= riscv::encode_i_vr1(dec);           break;
 		case rv_codec_i_frv:            return inst |= riscv::encode_i_frv(dec);           break;
+		case rv_codec_i_vv0:            return inst |= riscv::encode_i_vv0(dec);           break;
+		case rv_codec_i_vr0:            return inst |= riscv::encode_i_vr0(dec);           break;
 	};
 	return inst;
 }
