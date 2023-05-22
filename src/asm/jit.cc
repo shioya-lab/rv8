@@ -8279,14 +8279,14 @@ inst_t riscv::emit_vmfne_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
 	return encode_inst(dec);
 }
 
-inst_t riscv::emit_vfdiv_vx(vreg5 vd, vreg5 vs2, freg5 frs1)
+inst_t riscv::emit_vfdiv_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfdiv_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
+	dec.op = rv_op_vfdiv_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	return encode_inst(dec);
 }
 
@@ -8505,17 +8505,6 @@ inst_t riscv::emit_vfmul_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
 	decode dec;
 	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
 	dec.op = rv_op_vfmul_vv;
-/* dec.? = vd unhandled */
-/* dec.? = vs2 unhandled */
-/* dec.? = vs1 unhandled */
-	return encode_inst(dec);
-}
-
-inst_t riscv::emit_vfrsub_vv(vreg5 vd, vreg5 vs2, vreg5 vs1)
-{
-	decode dec;
-	if (!(vd.valid() && vs2.valid() && vs1.valid())) return 0; /* illegal instruction */
-	dec.op = rv_op_vfrsub_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
 /* dec.? = vs1 unhandled */
@@ -18266,14 +18255,14 @@ bool riscv::asm_vmfne_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
 	return true;
 }
 
-bool riscv::asm_vfdiv_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1)
+bool riscv::asm_vfdiv_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 {
 	decode dec;
-	if (!(vd.valid() && vs2.valid() && frs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfdiv_vx;
+	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
+	dec.op = rv_op_vfdiv_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
-	dec.rs1 = frs1;
+/* dec.? = vs1 unhandled */
 	as.add_inst(encode_inst(dec));
 	return true;
 }
@@ -18514,18 +18503,6 @@ bool riscv::asm_vfmul_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
 	decode dec;
 	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
 	dec.op = rv_op_vfmul_vv;
-/* dec.? = vd unhandled */
-/* dec.? = vs2 unhandled */
-/* dec.? = vs1 unhandled */
-	as.add_inst(encode_inst(dec));
-	return true;
-}
-
-bool riscv::asm_vfrsub_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1)
-{
-	decode dec;
-	if (!(vd.valid() && vs2.valid() && vs1.valid())) return false; /* illegal instruction */
-	dec.op = rv_op_vfrsub_vv;
 /* dec.? = vd unhandled */
 /* dec.? = vs2 unhandled */
 /* dec.? = vs1 unhandled */

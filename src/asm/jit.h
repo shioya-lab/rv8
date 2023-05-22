@@ -766,7 +766,7 @@ namespace riscv
 	inst_t emit_vmfle_vx(vreg5 vd, vreg5 vs2, freg5 frs1);
 	inst_t emit_vmflt_vx(vreg5 vd, vreg5 vs2, freg5 frs1);
 	inst_t emit_vmfne_vx(vreg5 vd, vreg5 vs2, freg5 frs1);
-	inst_t emit_vfdiv_vx(vreg5 vd, vreg5 vs2, freg5 frs1);
+	inst_t emit_vfdiv_vv(vreg5 vd, vreg5 vs2, vreg5 vs1);
 	inst_t emit_vfcvt_xu_f_v(vreg5 vd, vreg5 vs2);
 	inst_t emit_vfcvt_x_f_v(vreg5 vd, vreg5 vs2);
 	inst_t emit_vfcvt_f_xu_v(vreg5 vd, vreg5 vs2);
@@ -789,7 +789,6 @@ namespace riscv
 	inst_t emit_vfncvt_rtz_xu_f_w(vreg5 vd, vreg5 vs2);
 	inst_t emit_vfncvt_rtz_x_f_w(vreg5 vd, vreg5 vs2);
 	inst_t emit_vfmul_vv(vreg5 vd, vreg5 vs2, vreg5 vs1);
-	inst_t emit_vfrsub_vv(vreg5 vd, vreg5 vs2, vreg5 vs1);
 	inst_t emit_vfmadd_vv(vreg5 vd, vreg5 vs2, vreg5 vs1, vreg5 vs3);
 	inst_t emit_vfnmadd_vv(vreg5 vd, vreg5 vs2, vreg5 vs1, vreg5 vs3);
 	inst_t emit_vfmsub_vv(vreg5 vd, vreg5 vs2, vreg5 vs1, vreg5 vs3);
@@ -1613,7 +1612,7 @@ namespace riscv
 	bool asm_vmfle_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1);
 	bool asm_vmflt_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1);
 	bool asm_vmfne_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1);
-	bool asm_vfdiv_vx(assembler &as, vreg5 vd, vreg5 vs2, freg5 frs1);
+	bool asm_vfdiv_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1);
 	bool asm_vfcvt_xu_f_v(assembler &as, vreg5 vd, vreg5 vs2);
 	bool asm_vfcvt_x_f_v(assembler &as, vreg5 vd, vreg5 vs2);
 	bool asm_vfcvt_f_xu_v(assembler &as, vreg5 vd, vreg5 vs2);
@@ -1636,7 +1635,6 @@ namespace riscv
 	bool asm_vfncvt_rtz_xu_f_w(assembler &as, vreg5 vd, vreg5 vs2);
 	bool asm_vfncvt_rtz_x_f_w(assembler &as, vreg5 vd, vreg5 vs2);
 	bool asm_vfmul_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1);
-	bool asm_vfrsub_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1);
 	bool asm_vfmadd_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1, vreg5 vs3);
 	bool asm_vfnmadd_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1, vreg5 vs3);
 	bool asm_vfmsub_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1, vreg5 vs3);

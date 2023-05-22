@@ -160,8 +160,9 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 										case 16: if (rvv && rv64) op = rv_op_vle8ff_v; break;
 									}
 									break;
-								case 1: if (rvv && rv64) op = rv_op_vluxei8_v; break; // vluxei8.v vloxei8.v
+								case 1: if (rvv && rv64) op = rv_op_vluxei8_v; break;
 								case 2: if (rvv && rv64) op = rv_op_vlse8_v; break;
+								case 3: if (rvv && rv64) op = rv_op_vloxei8_v; break;
 								case 8:
 									// vl2re8.v vlseg2e8.v
 									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
@@ -224,8 +225,9 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 										case 16: if (rvv && rv64) op = rv_op_vle16ff_v; break;
 									}
 									break;
-								case 1: if (rvv && rv64) op = rv_op_vluxei16_v; break; // vluxei16.v vloxei16.v
+								case 1: if (rvv && rv64) op = rv_op_vluxei16_v; break;
 								case 2: if (rvv && rv64) op = rv_op_vlse16_v; break;
+								case 3: if (rvv && rv64) op = rv_op_vloxei16_v; break;
 								case 8:
 									// vl2re16.v vlseg2e16.v
 									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
@@ -285,8 +287,9 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 										case 16: if (rvv && rv64) op = rv_op_vle32ff_v; break;
 									}
 									break;
-								case 1: if (rvv && rv64) op = rv_op_vluxei32_v; break; // vluxei32.v vloxei32.v
+								case 1: if (rvv && rv64) op = rv_op_vluxei32_v; break;
 								case 2: if (rvv && rv64) op = rv_op_vlse32_v; break;
+								case 3: if (rvv && rv64) op = rv_op_vloxei32_v; break;
 								case 8:
 									// vl2re32.v vlseg2e32.v
 									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
@@ -346,8 +349,9 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 										case 16: if (rvv && rv64) op = rv_op_vle64ff_v; break;
 									}
 									break;
-								case 1: if (rvv && rv64) op = rv_op_vluxei64_v; break; // vluxei64.v vloxei64.v
+								case 1: if (rvv && rv64) op = rv_op_vluxei64_v; break;
 								case 2: if (rvv && rv64) op = rv_op_vlse64_v; break;
+								case 3: if (rvv && rv64) op = rv_op_vloxei64_v; break;
 								case 8:
 									// vl2re64.v vlseg2e64.v
 									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
@@ -485,8 +489,9 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 										case 8: if (rvv && rv64) op = rv_op_vs1re8_v; break;
 									}
 									break;
-								case 1: if (rvv && rv64) op = rv_op_vsuxei8_v; break; // vsuxei8.v vsoxei8.v
+								case 1: if (rvv && rv64) op = rv_op_vsuxei8_v; break;
 								case 2: if (rvv && rv64) op = rv_op_vsse8_v; break;
+								case 3: if (rvv && rv64) op = rv_op_vsoxei8_v; break;
 								case 8:
 									// vs2re8.v vsseg2e8.v
 									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
@@ -548,8 +553,9 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 										case 8: if (rvv && rv64) op = rv_op_vs1re16_v; break;
 									}
 									break;
-								case 1: if (rvv && rv64) op = rv_op_vsuxei16_v; break; // vsuxei16.v vsoxei16.v
+								case 1: if (rvv && rv64) op = rv_op_vsuxei16_v; break;
 								case 2: if (rvv && rv64) op = rv_op_vsse16_v; break;
+								case 3: if (rvv && rv64) op = rv_op_vsoxei16_v; break;
 								case 8:
 									// vs2re16.v vsseg2e16.v
 									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
@@ -608,8 +614,9 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 										case 8: if (rvv && rv64) op = rv_op_vs1re32_v; break;
 									}
 									break;
-								case 1: if (rvv && rv64) op = rv_op_vsuxei32_v; break; // vsuxei32.v vsoxei32.v
+								case 1: if (rvv && rv64) op = rv_op_vsuxei32_v; break;
 								case 2: if (rvv && rv64) op = rv_op_vsse32_v; break;
+								case 3: if (rvv && rv64) op = rv_op_vsoxei32_v; break;
 								case 8:
 									// vs2re32.v vsseg2e32.v
 									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
@@ -668,8 +675,9 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 										case 8: if (rvv && rv64) op = rv_op_vs1re64_v; break;
 									}
 									break;
-								case 1: if (rvv && rv64) op = rv_op_vsuxei64_v; break; // vsuxei64.v vsoxei64.v
+								case 1: if (rvv && rv64) op = rv_op_vsuxei64_v; break;
 								case 2: if (rvv && rv64) op = rv_op_vsse64_v; break;
+								case 3: if (rvv && rv64) op = rv_op_vsoxei64_v; break;
 								case 8:
 									// vs2re64.v vsseg2e64.v
 									switch (((inst >> 20) & 0b11111) /* inst[24:20] */) {
@@ -1334,11 +1342,10 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 							}
 							break;
 						case 9:
-							// vfdiv.vx vfmul.vv vfrsub.vv vfmadd.vv vfnmadd.vv vfmsub.vv vfnmsub.vv vfmacc.vv vfnmacc.vv vfmsac.vv vfnmsac.vv vfwadd.vv ...
+							// vfdiv.vv vfmul.vv vfmadd.vv vfnmadd.vv vfmsub.vv vfnmsub.vv vfmacc.vv vfnmacc.vv vfmsac.vv vfnmsac.vv vfwadd.vv vfwredsum.vv ...
 							switch (((inst >> 26) & 0b11111) /* inst[30:26] */) {
-								case 0: if (rvv && rv64) op = rv_op_vfdiv_vx; break;
+								case 0: if (rvv && rv64) op = rv_op_vfdiv_vv; break;
 								case 4: if (rvv && rv64) op = rv_op_vfmul_vv; break;
-								case 7: if (rvv && rv64) op = rv_op_vfrsub_vv; break;
 								case 8: if (rvv && rv64) op = rv_op_vfmadd_vv; break;
 								case 9: if (rvv && rv64) op = rv_op_vfnmadd_vv; break;
 								case 10: if (rvv && rv64) op = rv_op_vfmsub_vv; break;
@@ -1451,7 +1458,7 @@ inline opcode_t decode_inst_op(riscv::inst_t inst)
 								case 0: if (rvv && rv64) op = rv_op_vfdiv_vf; break;
 								case 1: if (rvv && rv64) op = rv_op_vfrdiv_vf; break;
 								case 4: if (rvv && rv64) op = rv_op_vfmul_vf; break;
-								case 5: if (rvv && rv64) op = rv_op_vfrsub_vf; break;
+								case 7: if (rvv && rv64) op = rv_op_vfrsub_vf; break;
 								case 8: if (rvv && rv64) op = rv_op_vfmadd_vf; break;
 								case 9: if (rvv && rv64) op = rv_op_vfnmadd_vf; break;
 								case 10: if (rvv && rv64) op = rv_op_vfmsub_vf; break;
