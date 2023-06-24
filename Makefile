@@ -655,15 +655,15 @@ $(RV_BIN_BIN): $(RV_BIN_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB)
 	@mkdir -p $(shell dirname $@) ;
 	$(call cmd, LD $@, $(LD) $^ $(LDFLAGS) -o $@)
 
-$(RV_JIT_BIN): $(RV_JIT_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(ASMJIT_LIB) $(MMAP_LIB) $(SNIPER_SIFT_LIB)
+$(RV_JIT_BIN): $(RV_JIT_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(ASMJIT_LIB) $(MMAP_LIB)
 	@mkdir -p $(shell dirname $@) ;
 	$(call cmd, LD $@, $(LD) $^ $(SNIPER_SIFT_LIB) $(LDFLAGS) $(SNIPER_SIFT_LIB) $(MMAP_FLAGS) -o $@)
 
-$(RV_SIM_BIN): $(RV_SIM_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(MMAP_LIB) $(SNIPER_SIFT_LIB)
+$(RV_SIM_BIN): $(RV_SIM_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(MMAP_LIB)
 	@mkdir -p $(shell dirname $@) ;
 	$(call cmd, LD $@, $(LD) $^ $(LDFLAGS) $(MMAP_FLAGS) -o $@)
 
-$(RV_SYS_BIN): $(RV_SYS_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(SNIPER_SIFT_LIB)
+$(RV_SYS_BIN): $(RV_SYS_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB)
 	@mkdir -p $(shell dirname $@) ;
 	$(call cmd, LD $@, $(LD) $^ $(LDFLAGS) -o $@)
 
@@ -679,7 +679,7 @@ $(TEST_ENDIAN_BIN): $(TEST_ENDIAN_OBJS)
 	@mkdir -p $(shell dirname $@) ;
 	$(call cmd, LD $@, $(LD) $^ $(LDFLAGS) -o $@)
 
-$(TEST_JIT_BIN): $(TEST_JIT_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(ASMJIT_LIB) $(MMAP_LIB) $(SNIPER_SIFT_LIB)
+$(TEST_JIT_BIN): $(TEST_JIT_OBJS) $(RV_ASM_LIB) $(RV_ELF_LIB) $(RV_UTIL_LIB) $(ASMJIT_LIB) $(MMAP_LIB)
 	@mkdir -p $(shell dirname $@) ;
 	$(call cmd, LD $@, $(LD) $^ $(LDFLAGS) -o $@)
 
