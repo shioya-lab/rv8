@@ -79,6 +79,7 @@ const char* rv_fmt_vd_vs2_vs1_vd   =       "O\t8,d,b";
 const char* rv_fmt_vd_vs2_frs1  =          "O\t8,d,4";
 const char* rv_fmt_vd_vs2_simm5 =          "O\t8,d,i";
 const char* rv_fmt_vd_vs2 =                "O\t8,d";
+const char* rv_fmt_rd_vs2 =                "O\t0,d";
 const char* rv_fmt_rd_imm12_oimm12 =       "O\t0,i,i";
 const char* rv_fmt_vd_rs1_vs2  =           "O\t8,(1),d";
 const char* rv_fmt_vs3_rs1_vs2 =           "O\t9,(1),d";

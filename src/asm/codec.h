@@ -118,7 +118,7 @@ namespace riscv
 		uint8_t  rs2;        /* (5 bits) byte aligned for performance */
 		uint8_t  rs3;        /* (5 bits) byte aligned for performance */
 		uint16_t op    : 10; /* (>256 entries) nearly full */
-		uint16_t codec : 6;  /* (>32 entries) can grow */
+		uint16_t codec : 7;  /* (>32 entries) can grow */
 		uint8_t  rm    : 3;  /* round mode for some FPU ops */
 		uint8_t  aq    : 1;  /* acquire for atomic ops */
 		uint8_t  rl    : 1;  /* release for atomic ops */

@@ -647,6 +647,7 @@ enum rv_codec
 	rv_codec_i_vv,
 	rv_codec_i_vvv,
 	rv_codec_i_vr,
+	rv_codec_i_iv,
 	rv_codec_i_vf,
 	rv_codec_i_vvf,
 	rv_codec_i_vi,

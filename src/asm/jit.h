@@ -665,9 +665,9 @@ namespace riscv
 	inst_t emit_vaadd_vv(vreg5 vd, vreg5 vs2, vreg5 vs1);
 	inst_t emit_vasubu_vv(vreg5 vd, vreg5 vs2, vreg5 vs1);
 	inst_t emit_vasub_vv(vreg5 vd, vreg5 vs2, vreg5 vs1);
-	inst_t emit_vmv_x_s(vreg5 vd, vreg5 vs2);
-	inst_t emit_vpopc_m(vreg5 vd, vreg5 vs2);
-	inst_t emit_vfirst_m(vreg5 vd, vreg5 vs2);
+	inst_t emit_vmv_x_s(ireg5 rd, vreg5 vs2);
+	inst_t emit_vpopc_m(ireg5 rd, vreg5 vs2);
+	inst_t emit_vfirst_m(ireg5 rd, vreg5 vs2);
 	inst_t emit_vmv_s_x(vreg5 vd, vreg5 vs2);
 	inst_t emit_vzext_vf8(vreg5 vd, vreg5 vs2);
 	inst_t emit_vsext_vf8(vreg5 vd, vreg5 vs2);
@@ -1511,9 +1511,9 @@ namespace riscv
 	bool asm_vaadd_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1);
 	bool asm_vasubu_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1);
 	bool asm_vasub_vv(assembler &as, vreg5 vd, vreg5 vs2, vreg5 vs1);
-	bool asm_vmv_x_s(assembler &as, vreg5 vd, vreg5 vs2);
-	bool asm_vpopc_m(assembler &as, vreg5 vd, vreg5 vs2);
-	bool asm_vfirst_m(assembler &as, vreg5 vd, vreg5 vs2);
+	bool asm_vmv_x_s(assembler &as, ireg5 rd, vreg5 vs2);
+	bool asm_vpopc_m(assembler &as, ireg5 rd, vreg5 vs2);
+	bool asm_vfirst_m(assembler &as, ireg5 rd, vreg5 vs2);
 	bool asm_vmv_s_x(assembler &as, vreg5 vd, vreg5 vs2);
 	bool asm_vzext_vf8(assembler &as, vreg5 vd, vreg5 vs2);
 	bool asm_vsext_vf8(assembler &as, vreg5 vd, vreg5 vs2);
