@@ -68,5 +68,6 @@ typedef uimm_operand_t<5, S<19,15, B<4,0>>>                                     
 typedef uimm_operand_t<5, S<24,20, B<4,0>>>                                        operand_vs2;
 typedef uimm_operand_t<5, S<11,7, B<4,0>>>                                         operand_vs3;
 typedef simm_operand_t<5, S<19,15, B<4,0>>>                                        operand_simm5;
+typedef uimm_operand_t<1, S<24,24, B<0,0>>>                                        operand_v0t;
 
 #endif

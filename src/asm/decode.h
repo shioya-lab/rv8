@@ -479,6 +479,27 @@ template <typename T> inline void decode_s_vsv(T &dec, inst_t inst)
 }
 
 
+/* Decode Vector Indxed Load */
+template <typename T> inline void decode_i_vsvm(T &dec, inst_t inst)
+{
+	dec.rd = operand_rd::decode(inst);
+	dec.rs1 = operand_rs1::decode(inst);
+	dec.rs2 = operand_rs2::decode(inst);
+    dec.rs3 = rv_ireg_zero;
+	dec.imm = 0;
+}
+
+/* Decode Vector Indexed Store */
+template <typename T> inline void decode_s_vsvm(T &dec, inst_t inst)
+{
+	dec.rd = rv_ireg_zero;
+	dec.rs1 = operand_rs1::decode(inst);
+	dec.rs2 = operand_rs2::decode(inst);
+	dec.rs3 = operand_rd::decode(inst);
+	dec.imm = 0;
+}
+
+
 template <typename T> inline void decode_i_vv(T &dec, inst_t inst)
 {
 	dec.rd = operand_rd::decode(inst);
@@ -554,6 +575,16 @@ template <typename T> inline void decode_i_vi(T &dec, inst_t inst)
 	dec.rs3 = rv_ireg_zero;
 	dec.imm = operand_simm5::decode(inst);
 }
+
+template <typename T> inline void decode_i_vii(T &dec, inst_t inst)
+{
+	dec.rd = operand_rd::decode(inst);
+	dec.rs1 = rv_ireg_zero;
+	dec.rs2 = rv_ireg_zero;
+	dec.rs3 = rv_ireg_zero;
+	dec.imm = operand_simm5::decode(inst);
+}
+
 
 template <typename T> inline void decode_i_v(T &dec, inst_t inst)
 {

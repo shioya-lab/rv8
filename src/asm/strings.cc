@@ -505,6 +505,22 @@ const char* rv_inst_name_sym[] = {
 	"vsoxei32.v",
 	"vloxei64.v",
 	"vsoxei64.v",
+	"vluxei8.vm",
+	"vsuxei8.vm",
+	"vluxei16.vm",
+	"vsuxei16.vm",
+	"vluxei32.vm",
+	"vsuxei32.vm",
+	"vluxei64.vm",
+	"vsuxei64.vm",
+	"vloxei8.vm",
+	"vsoxei8.vm",
+	"vloxei16.vm",
+	"vsoxei16.vm",
+	"vloxei32.vm",
+	"vsoxei32.vm",
+	"vloxei64.vm",
+	"vsoxei64.vm",
 	"vlseg2e8.v",
 	"vsseg2e8.v",
 	"vlseg2e16.v",
@@ -1119,6 +1135,7 @@ const char* rv_operand_name_sym[] = {
 	"vs2",
 	"vs3",
 	"simm5",
+	"v0t",
 	nullptr
 };
 
@@ -1150,6 +1167,7 @@ const char* rv_operand_type_sym[] = {
 	"simm9",
 	"vreg5",
 	"simm1",
+	"vreg1",
 	nullptr
 };
 
