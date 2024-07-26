@@ -50,6 +50,7 @@ extern "C" {
     extern const char* rv_fmt_vd_vs2_vs1;
     extern const char* rv_fmt_vd_vs2_rs1;
     extern const char* rv_fmt_vd_vs2_vs1_v0;
+    extern const char* rv_fmt_vd_vs2_vs1_v0t;
     extern const char* rv_fmt_vd_vs2_rs1_v0;
     extern const char* rv_fmt_vd_vs2_vs1_vd;
     extern const char* rv_fmt_vd_vs2_frs1;
