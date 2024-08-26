@@ -354,10 +354,12 @@ template <typename T> inline inst_t encode_i_vv0(T &dec) { return 0; }
 template <typename T> inline inst_t encode_i_vvm(T &dec) { return 0; }
 template <typename T> inline inst_t encode_i_vvv(T &dec) { return 0; }
 template <typename T> inline inst_t encode_i_vr(T &dec) { return 0; }
+template <typename T> inline inst_t encode_i_vrm(T &dec) { return 0; }
 template <typename T> inline inst_t encode_i_vr0(T &dec) { return 0; }
 template <typename T> inline inst_t encode_i_vf(T &dec) { return 0; }
 template <typename T> inline inst_t encode_i_vvf(T &dec) { return 0; }
 template <typename T> inline inst_t encode_i_vi(T &dec) { return 0; }
+template <typename T> inline inst_t encode_i_vim(T &dec) { return 0; }
 template <typename T> inline inst_t encode_i_vii(T &dec) { return 0; }
 template <typename T> inline inst_t encode_i_iv(T &dec) { return 0; }
 template <typename T> inline inst_t encode_i_v(T &dec) { return 0; }
