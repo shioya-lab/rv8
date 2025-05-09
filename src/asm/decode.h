@@ -426,6 +426,7 @@ template <typename T> inline void decode_i_lv(T &dec, inst_t inst)
 	dec.rs1 = operand_rs1::decode(inst);
 	dec.rs2 = rv_ireg_zero;
 	dec.imm = 0;
+	dec.vm = operand_vm::decode(inst);
 }
 
 /* Decode Vector Unit-Stride Store */
@@ -436,6 +437,7 @@ template <typename T> inline void decode_s_v(T &dec, inst_t inst)
 	dec.rs2 = rv_ireg_zero;
 	dec.rs3 = operand_rd::decode(inst);
 	dec.imm = 0;
+	dec.vm = operand_vm::decode(inst);
 }
 
 
@@ -446,6 +448,7 @@ template <typename T> inline void decode_i_vs(T &dec, inst_t inst)
 	dec.rs1 = operand_rs1::decode(inst);
 	dec.rs2 = operand_rs2::decode(inst);
 	dec.imm = 0;
+	dec.vm = operand_vm::decode(inst);
 }
 
 /* Decode Vector Strided Store */
@@ -456,6 +459,7 @@ template <typename T> inline void decode_s_vs(T &dec, inst_t inst)
 	dec.rs2 = operand_rs2::decode(inst);
 	dec.rs3 = operand_rd::decode(inst);
 	dec.imm = 0;
+	dec.vm = operand_vm::decode(inst);
 }
 
 
@@ -466,6 +470,7 @@ template <typename T> inline void decode_i_vsv(T &dec, inst_t inst)
 	dec.rs1 = operand_rs1::decode(inst);
 	dec.rs2 = operand_rs2::decode(inst);
 	dec.imm = 0;
+	dec.vm = operand_vm::decode(inst);
 }
 
 /* Decode Vector Indexed Store */
@@ -476,6 +481,7 @@ template <typename T> inline void decode_s_vsv(T &dec, inst_t inst)
 	dec.rs2 = operand_rs2::decode(inst);
 	dec.rs3 = operand_rd::decode(inst);
 	dec.imm = 0;
+	dec.vm = operand_vm::decode(inst);
 }
 
 
