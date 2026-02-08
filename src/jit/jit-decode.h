@@ -5,6 +5,7 @@
 #ifndef rv_jit_decode_h
 #define rv_jit_decode_h
 
+#include "types.h"
 namespace riscv {
 
 	struct jit_decode
@@ -27,22 +28,22 @@ namespace riscv {
 		u8     brt  : 1;     /* branch target */
 		u8     brc  : 1;     /* branch condition */
 		u8     sz   : 4;     /* fused instruction size */
-
+		u8     vm   : 1;     /* vector mask for vector ops */
 		jit_decode()
 			: pc(0), inst(0), imm(0), op(0), codec(0), rd(0), rs1(0), rs2(0), rs3(0),
-			  rm(0), pred(0), succ(0), aq(0), rl(0), brt(0), brc(0), sz(0) {}
+			  rm(0), pred(0), succ(0), aq(0), rl(0), brt(0), brc(0), sz(0), vm(0) {}
 
 		jit_decode(addr_t pc, u64 inst, u16 op, u8 rd, s32 imm)
 			: pc(pc), inst(inst), imm(imm), op(op), codec(0), rd(rd), rs1(0), rs2(0), rs3(0),
-			  rm(0), pred(0), succ(0), aq(0), rl(0), brt(0), brc(0), sz(0) {}
+			  rm(0), pred(0), succ(0), aq(0), rl(0), brt(0), brc(0), sz(0), vm(0) {}
 
 		jit_decode(addr_t pc, u64 inst, u16 op, u8 rd, u8 rs1, s32 imm)
 			: pc(pc), inst(inst), imm(imm), op(op), codec(0), rd(rd), rs1(rs1), rs2(0), rs3(0),
-			  rm(0), pred(0), succ(0), aq(0), rl(0), brt(0), brc(0), sz(0) {}
+			  rm(0), pred(0), succ(0), aq(0), rl(0), brt(0), brc(0), sz(0), vm(0) {}
 
 		jit_decode(addr_t pc, u64 inst, u16 op, u8 rd, u8 rs1, u8 rs2, s32 imm)
 			: pc(pc), inst(inst), imm(imm), op(op), codec(0), rd(rd), rs1(rs1), rs2(rs2), rs3(0),
-			  rm(0), pred(0), succ(0), aq(0), rl(0), brt(0), brc(0), sz(0) {}
+			  rm(0), pred(0), succ(0), aq(0), rl(0), brt(0), brc(0), sz(0), vm(0) {}
 	};
 
 	enum jit_op {

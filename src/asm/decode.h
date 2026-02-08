@@ -487,6 +487,7 @@ template <typename T> inline void decode_i_vsvm(T &dec, inst_t inst)
 	dec.rs2 = operand_rs2::decode(inst);
     dec.rs3 = rv_ireg_zero;
 	dec.imm = 0;
+	dec.vm = 1;
 }
 
 /* Decode Vector Indexed Store */
@@ -497,6 +498,7 @@ template <typename T> inline void decode_s_vsvm(T &dec, inst_t inst)
 	dec.rs2 = operand_rs2::decode(inst);
 	dec.rs3 = operand_rd::decode(inst);
 	dec.imm = 0;
+	dec.vm = 1;
 }
 
 

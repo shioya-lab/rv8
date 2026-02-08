@@ -124,9 +124,9 @@ namespace riscv
 		uint8_t  rl    : 1;  /* release for atomic ops */
 		uint8_t  pred  : 4;  /* pred for fence */
 		uint8_t  succ  : 4;  /* succ for fence */
-
+		uint8_t  vm    : 1;  /* vector mask for vector ops */
 		decode()
-			: imm(0), rd(0), rs1(0), rs2(0), rs3(0), op(0), codec(0), rm(0), aq(0), rl(0), pred(0), succ(0) {}
+			: imm(0), rd(0), rs1(0), rs2(0), rs3(0), op(0), codec(0), rm(0), aq(0), rl(0), pred(0), succ(0), vm(0) {}
 	};
 
 
